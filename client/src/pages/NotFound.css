@@ -1,0 +1,80 @@
+.not-found-page {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+  background: var(--bg);
+}
+
+.not-found-card {
+  text-align: center;
+  max-width: 480px;
+}
+
+.not-found-icon {
+  width: 96px;
+  height: 96px;
+  border-radius: 24px;
+  background: var(--teal-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 28px;
+  color: var(--teal);
+}
+
+.not-found-title {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+.not-found-subtitle {
+  font-size: 16px;
+  color: var(--soft);
+  line-height: 1.7;
+  max-width: 40ch;
+  margin: 0 auto 32px;
+}
+
+.not-found-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Reuse button styles from About.css via global-ish approach */
+.not-found-actions a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: var(--radius-pill);
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: 700;
+  transition: all 0.25s;
+}
+
+.not-found-actions a:first-child {
+  background: var(--teal);
+  color: #fff;
+}
+
+.not-found-actions a:first-child:hover {
+  background: var(--teal-dark);
+  gap: 12px;
+}
+
+.not-found-actions a:last-child {
+  border: 1.5px solid var(--line);
+  color: var(--ink);
+}
+
+.not-found-actions a:last-child:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+}

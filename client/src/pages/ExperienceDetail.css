@@ -1,0 +1,184 @@
+.exp-detail-page {
+  background: var(--bg);
+}
+
+.exp-detail-overview {
+  margin-bottom: 48px;
+  max-width: 76ch;
+}
+
+.exp-detail-overview-text h2 {
+  margin-bottom: 16px;
+}
+
+.exp-detail-overview-text p {
+  font-size: 15.5px;
+  line-height: 1.8;
+  color: var(--soft);
+}
+
+/* Section */
+.exp-detail-section {
+  margin-bottom: 56px;
+}
+
+.exp-detail-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+/* Activities grid */
+.exp-activities-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.exp-activity-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.exp-activity-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.exp-activity-img {
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+
+.exp-activity-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.exp-activity-card:hover .exp-activity-img img {
+  transform: scale(1.06);
+}
+
+.exp-activity-body {
+  padding: 18px;
+}
+
+.exp-activity-body h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.exp-activity-body p {
+  font-size: 13.5px;
+  color: var(--soft);
+  line-height: 1.6;
+}
+
+/* Destinations grid */
+.exp-dest-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Packages list */
+.exp-packages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* CTA */
+.exp-detail-cta {
+  background: var(--ink);
+  border-radius: var(--radius-lg);
+  padding: 56px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.exp-detail-cta h2 {
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.exp-detail-cta p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 28px;
+}
+
+.exp-detail-cta-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Button utilities */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--teal);
+  color: #fff;
+  border-radius: var(--radius-pill);
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: 700;
+  transition: all 0.25s;
+}
+
+.btn-primary:hover {
+  background: var(--teal-dark);
+  gap: 12px;
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.85);
+  border-radius: var(--radius-pill);
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: 700;
+  transition: all 0.25s;
+}
+
+.btn-outline:hover {
+  border-color: rgba(255, 255, 255, 0.7);
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .exp-activities-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .exp-dest-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .exp-detail-cta {
+    padding: 36px 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .exp-dest-grid {
+    grid-template-columns: 1fr;
+  }
+}

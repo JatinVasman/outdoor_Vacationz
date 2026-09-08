@@ -1,0 +1,214 @@
+/* ─── Navbar Wrapper ─── */
+.navbar-wrapper {
+  position: sticky;
+  top: 14px;
+  z-index: 100;
+  padding: 0 16px;
+  pointer-events: none;
+  transition: top 0.3s ease;
+  margin-bottom: 12px;
+}
+
+.navbar-wrapper.scrolled {
+  top: 10px;
+}
+
+/* Inner pages: add a top offset so hero/content isn't behind the nav */
+.navbar-wrapper + main .page-hero {
+  padding-top: 0;
+}
+
+/* ─── Pill ─── */
+.navbar-pill {
+  max-width: 1160px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px 10px 20px;
+  box-shadow: 0 8px 32px -8px rgba(22, 33, 30, 0.2), 0 0 0 1px rgba(228, 232, 230, 0.6);
+  pointer-events: all;
+  transition: box-shadow 0.3s ease;
+}
+
+.navbar-wrapper.scrolled .navbar-pill {
+  box-shadow: 0 16px 48px -12px rgba(22, 33, 30, 0.28), 0 0 0 1px rgba(228, 232, 230, 0.6);
+}
+
+/* ─── Logo ─── */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.navbar-logo-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--teal);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.navbar-logo-text {
+  font-weight: 800;
+  font-size: 17px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.navbar-logo-accent {
+  color: var(--teal);
+}
+
+/* ─── Desktop Links ─── */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0 auto;
+}
+
+.navbar-link {
+  padding: 7px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--soft);
+  border-radius: 100px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.navbar-link:hover,
+.navbar-link.active {
+  color: var(--teal-dark);
+  background: var(--teal-light);
+  font-weight: 700;
+}
+
+/* ─── CTA ─── */
+.navbar-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--teal);
+  color: #fff;
+  padding: 11px 20px;
+  border-radius: 100px;
+  font-size: 13.5px;
+  font-weight: 700;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.navbar-cta:hover {
+  background: var(--teal-dark);
+  gap: 10px;
+}
+
+/* ─── Hamburger ─── */
+.navbar-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--ink);
+  padding: 6px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.navbar-hamburger:hover {
+  background: var(--line-soft);
+}
+
+/* ─── Mobile Menu ─── */
+.navbar-mobile-menu {
+  max-width: 1160px;
+  margin: 10px auto 0;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(16px);
+  border-radius: 20px;
+  box-shadow: 0 16px 40px -12px rgba(22, 33, 30, 0.2), 0 0 0 1px rgba(228, 232, 230, 0.5);
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              padding 0.35s ease,
+              opacity 0.25s ease;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar-mobile-menu.open {
+  max-height: 400px;
+  padding: 16px;
+  pointer-events: all;
+  opacity: 1;
+}
+
+.navbar-mobile-link {
+  padding: 13px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--soft);
+  border-radius: 12px;
+  transition: all 0.2s;
+}
+
+.navbar-mobile-link:hover,
+.navbar-mobile-link.active {
+  color: var(--teal-dark);
+  background: var(--teal-light);
+  font-weight: 700;
+}
+
+.navbar-mobile-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--teal);
+  color: #fff;
+  padding: 13px 20px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 8px;
+  transition: background 0.25s;
+}
+
+.navbar-mobile-cta:hover {
+  background: var(--teal-dark);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 900px) {
+  .navbar-links,
+  .navbar-cta {
+    display: none;
+  }
+
+  .navbar-hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+  }
+
+  .navbar-pill {
+    padding: 10px 10px 10px 16px;
+  }
+}

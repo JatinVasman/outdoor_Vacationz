@@ -1,0 +1,146 @@
+.destinations-page {
+  background: var(--bg);
+}
+
+/* Filter bar */
+.dest-page-filters {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.dest-page-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-pill);
+  padding: 11px 18px;
+  min-width: 240px;
+  transition: border-color 0.2s;
+}
+
+.dest-page-search:focus-within {
+  border-color: var(--teal);
+}
+
+.dest-page-search svg {
+  color: var(--soft);
+  flex-shrink: 0;
+}
+
+.dest-page-search input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: none;
+  color: var(--ink);
+  width: 100%;
+}
+
+.dest-page-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.dest-page-chip {
+  border: 1.5px solid var(--line);
+  background: #fff;
+  border-radius: var(--radius-pill);
+  padding: 9px 18px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--soft);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dest-page-chip.active,
+.dest-page-chip:hover {
+  border-color: var(--teal);
+  background: var(--teal-light);
+  color: var(--teal-dark);
+}
+
+/* Count */
+.dest-page-count {
+  font-size: 14px;
+  color: var(--soft);
+  margin-bottom: 28px;
+}
+
+.dest-page-count strong {
+  color: var(--ink);
+}
+
+/* Grid */
+.dest-page-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* Empty state */
+.dest-page-empty {
+  text-align: center;
+  padding: 80px 24px;
+  color: var(--soft);
+}
+
+.dest-page-empty span {
+  display: block;
+  font-size: 40px;
+  margin-bottom: 12px;
+}
+
+.dest-page-empty p {
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.dest-page-empty button {
+  background: var(--teal);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 11px 24px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.dest-page-empty button:hover {
+  background: var(--teal-dark);
+}
+
+@media (max-width: 1100px) {
+  .dest-page-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .dest-page-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dest-page-filters {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dest-page-search {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .dest-page-grid {
+    grid-template-columns: 1fr;
+  }
+}

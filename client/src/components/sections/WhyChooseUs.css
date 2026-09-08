@@ -1,0 +1,157 @@
+.why-section {
+  background: var(--bg);
+  padding: 88px 0;
+}
+
+.why-split {
+  background: var(--ink);
+  border-radius: 24px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+}
+
+/* Text */
+.why-text {
+  padding: 60px 52px;
+  display: flex;
+  flex-direction: column;
+}
+
+.why-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 40px;
+}
+
+.why-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  font-size: 14.5px;
+  color: #cdd6d2;
+  line-height: 1.6;
+}
+
+.why-item b {
+  color: #fff;
+}
+
+.why-check {
+  color: #7fd6c4;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Stats */
+.why-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 32px;
+}
+
+.why-stat {
+  padding-right: 20px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.why-stat:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+.why-stat b {
+  display: block;
+  font-size: 28px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.why-stat span {
+  font-size: 12.5px;
+  color: #7a8f8a;
+}
+
+/* Image */
+.why-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.why-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 400px;
+  display: block;
+}
+
+/* Float card */
+.why-float-card {
+  position: absolute;
+  bottom: 24px;
+  left: 20px;
+  background: rgba(22, 33, 30, 0.88);
+  backdrop-filter: blur(12px);
+  color: #fff;
+  padding: 16px 20px;
+  border-radius: 16px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  max-width: 240px;
+}
+
+.why-float-icon {
+  width: 42px;
+  height: 42px;
+  background: var(--teal);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.why-float-card b {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.why-float-card span {
+  font-size: 12px;
+  color: #a0b5b0;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .why-split {
+    grid-template-columns: 1fr;
+  }
+
+  .why-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .why-stat {
+    border-right: none;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .why-text {
+    padding: 36px 28px;
+  }
+
+  .why-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+}

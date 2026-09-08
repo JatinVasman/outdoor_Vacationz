@@ -1,0 +1,13 @@
+.packages-page {
+  background: var(--bg);
+}
+
+.packages-page-header {
+  margin-bottom: 36px;
+}
+
+.packages-page-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}

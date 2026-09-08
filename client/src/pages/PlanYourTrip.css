@@ -1,0 +1,328 @@
+.plan-trip-page {
+  background: var(--bg);
+}
+
+.plan-trip-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Form */
+.plan-trip-form-wrap {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: var(--shadow-sm);
+}
+
+.plan-form-block {
+  margin-bottom: 36px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--line);
+}
+
+.plan-form-block:last-of-type {
+  border-bottom: none;
+}
+
+.plan-block-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+
+.plan-block-title svg {
+  color: var(--teal);
+}
+
+.plan-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.plan-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.plan-field label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--soft);
+}
+
+.plan-field input,
+.plan-field select,
+.plan-form-block textarea {
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--bg);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  width: 100%;
+  font-family: inherit;
+}
+
+.plan-field input:focus,
+.plan-field select:focus,
+.plan-form-block textarea:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(14, 124, 107, 0.12);
+  background: #fff;
+}
+
+.plan-field input.error,
+.plan-field select.error {
+  border-color: var(--red);
+}
+
+.plan-field-error {
+  font-size: 12px;
+  color: var(--red);
+  font-weight: 600;
+}
+
+.plan-form-block textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Chip selectors */
+.plan-chips-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.plan-chip {
+  border: 1.5px solid var(--line);
+  background: var(--bg);
+  border-radius: var(--radius-pill);
+  padding: 9px 18px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--soft);
+  cursor: pointer;
+  transition: all 0.18s;
+  font-family: inherit;
+}
+
+.plan-chip:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+.plan-chip.active {
+  border-color: var(--teal);
+  background: var(--teal-light);
+  color: var(--teal-dark);
+  font-weight: 700;
+}
+
+/* Submit */
+.plan-submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--teal);
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  padding: 18px 32px;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.25s;
+  font-family: inherit;
+  margin-top: 8px;
+}
+
+.plan-submit-btn:hover:not(:disabled) {
+  background: var(--teal-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.plan-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ─── Sidebar ─── */
+.plan-trip-sidebar {
+  position: sticky;
+  top: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.plan-sidebar-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 28px;
+}
+
+.plan-sidebar-card h4 {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+
+/* Steps list */
+.plan-steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.plan-steps li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.plan-steps li > span {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.plan-steps li > div strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+
+.plan-steps li > div p {
+  font-size: 13px;
+  color: var(--soft);
+  line-height: 1.5;
+}
+
+/* Contact block */
+.plan-sidebar-contact {
+  background: var(--teal-light);
+  border: 1px solid var(--teal-mid);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.plan-sidebar-contact p {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--teal-dark);
+}
+
+.plan-sidebar-phone,
+.plan-sidebar-email {
+  font-size: 13.5px;
+  color: var(--teal-dark);
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.plan-sidebar-phone:hover,
+.plan-sidebar-email:hover {
+  color: var(--ink);
+}
+
+/* ─── Success page ─── */
+.plan-success-page {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+  background: var(--bg);
+}
+
+.plan-success-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 60px 48px;
+  max-width: 560px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+
+.plan-success-card h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 16px 0 12px;
+}
+
+.plan-success-card p {
+  font-size: 15px;
+  color: var(--soft);
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+.plan-success-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .plan-trip-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .plan-trip-sidebar {
+    position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .plan-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .plan-trip-form-wrap {
+    padding: 24px 18px;
+  }
+
+  .plan-success-card {
+    padding: 40px 24px;
+  }
+}
