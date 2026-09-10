@@ -79,18 +79,18 @@ export function ContactSection() {
             </p>
 
             <div className="contact-details">
-              <a href="tel:+919820011223" className="contact-detail-item">
+              <a href="tel:+917669931399" className="contact-detail-item">
                 <span className="contact-detail-icon"><Phone size={16} /></span>
                 <div>
                   <b>Call us</b>
-                  <span>+91 98200 11223</span>
+                  <span>+91 76699 31399</span>
                 </div>
               </a>
-              <a href="mailto:hello@outdoorvacationz.com" className="contact-detail-item">
+              <a href="mailto:Outdoorvacationz@gmail.com" className="contact-detail-item">
                 <span className="contact-detail-icon"><Mail size={16} /></span>
                 <div>
                   <b>Email us</b>
-                  <span>hello@outdoorvacationz.com</span>
+                  <span>Outdoorvacationz@gmail.com</span>
                 </div>
               </a>
               <a

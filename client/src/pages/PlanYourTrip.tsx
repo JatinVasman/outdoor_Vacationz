@@ -280,11 +280,11 @@ export function PlanYourTrip() {
 
               <div className="plan-sidebar-contact">
                 <p>Prefer to speak directly?</p>
-                <a href="tel:+919820011223" className="plan-sidebar-phone">
-                  +91 98200 11223
+                <a href="tel:+917669931399" className="plan-sidebar-phone">
+                  +91 76699 31399
                 </a>
-                <a href="mailto:hello@outdoorvacationz.com" className="plan-sidebar-email">
-                  hello@outdoorvacationz.com
+                <a href="mailto:Outdoorvacationz@gmail.com" className="plan-sidebar-email">
+                  Outdoorvacationz@gmail.com
                 </a>
               </div>
             </aside>

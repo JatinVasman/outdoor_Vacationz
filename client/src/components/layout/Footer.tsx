@@ -98,14 +98,14 @@ export function Footer() {
             <ul className="footer-contact-list">
               <li className="footer-contact-item">
                 <Mail size={15} />
-                <a href="mailto:hello@outdoorvacationz.com" className="footer-link">
-                  hello@outdoorvacationz.com
+                <a href="mailto:Outdoorvacationz@gmail.com" className="footer-link">
+                  Outdoorvacationz@gmail.com
                 </a>
               </li>
               <li className="footer-contact-item">
                 <Phone size={15} />
-                <a href="tel:+919820011223" className="footer-link">
-                  +91 98200 11223
+                <a href="tel:+917669931399" className="footer-link">
+                  +91 76699 31399
                 </a>
               </li>
               <li className="footer-contact-item">

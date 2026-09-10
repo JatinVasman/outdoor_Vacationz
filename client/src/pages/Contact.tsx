@@ -4,8 +4,8 @@ import { PageHero } from '../components/layout/PageHero';
 import './ContactPage.css';
 
 const contactDetails = [
-  { icon: <Phone size={20} />, label: 'Phone', value: '+91 98200 11223', href: 'tel:+919820011223' },
-  { icon: <Mail size={20} />, label: 'Email', value: 'hello@outdoorvacationz.com', href: 'mailto:hello@outdoorvacationz.com' },
+  { icon: <Phone size={20} />, label: 'Phone', value: '+91 76699 31399', href: 'tel:+917669931399' },
+  { icon: <Mail size={20} />, label: 'Email', value: 'Outdoorvacationz@gmail.com', href: 'mailto:Outdoorvacationz@gmail.com' },
   { icon: <MapPin size={20} />, label: 'Location', value: 'India', href: undefined },
   { icon: <Clock size={20} />, label: 'Hours', value: 'Mon–Sat, 9am–7pm IST', href: undefined },
   { icon: <Instagram size={20} />, label: 'Instagram', value: '@outdoor_vacationz', href: 'https://www.instagram.com/outdoor_vacationz/' },
