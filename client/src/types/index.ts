@@ -40,6 +40,8 @@ export interface ItineraryDay {
   title: string;
   description: string;
   activities: string[];
+  image?: string;
+  imageCaption?: string;
 }
 
 export interface FAQ {
@@ -70,6 +72,10 @@ export interface TravelPackage {
   excludes: string[];
   faqs: FAQ[];
   destinationSlug: string;
+  hotel?: string;
+  guests?: string;
+  complimentary?: string;
+  vehicle?: string;
 }
 
 export interface ExperienceActivity {

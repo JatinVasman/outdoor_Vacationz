@@ -17,6 +17,7 @@ interface Props {
   badge?: string;
   meta?: React.ReactNode;
   children?: React.ReactNode;
+  onImageClick?: () => void;
 }
 
 export function PageHero({
@@ -29,10 +30,18 @@ export function PageHero({
   badge,
   meta,
   children,
+  onImageClick,
 }: Props) {
   return (
-    <div className={`page-hero page-hero--${overlay}`}>
-      <img src={image} alt={title} loading="eager" />
+    <div className={`page-hero page-hero--${overlay} ${onImageClick ? 'page-hero--clickable' : ''}`}>
+      <img
+        src={image}
+        alt={title}
+        loading="eager"
+        onClick={onImageClick}
+        style={onImageClick ? { cursor: 'pointer' } : undefined}
+        title={onImageClick ? 'Click to view full cover photo' : undefined}
+      />
       <div className={`page-hero-overlay page-hero-content page-hero-content--${align}`}>
         <div className="container">
           {breadcrumbs && (

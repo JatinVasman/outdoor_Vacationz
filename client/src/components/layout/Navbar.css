@@ -1,12 +1,13 @@
 /* ─── Navbar Wrapper ─── */
 .navbar-wrapper {
-  position: sticky;
+  position: fixed;
   top: 14px;
-  z-index: 100;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   padding: 0 16px;
   pointer-events: none;
   transition: top 0.3s ease;
-  margin-bottom: 12px;
 }
 
 .navbar-wrapper.scrolled {

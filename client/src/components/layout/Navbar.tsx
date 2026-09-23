@@ -3,10 +3,10 @@ import { NavLink, Link, useLocation } from 'react-router-dom';
 import { Menu, X, Plane, ArrowRight } from 'lucide-react';
 import './Navbar.css';
 
+// nav links — Destinations and Departure Cities intentionally excluded (footer only)
 const navLinks = [
-  { label: 'Destinations', href: '/destinations' },
-  { label: 'Packages', href: '/packages' },
-  { label: 'Experiences', href: '/experiences' },
+  { label: 'Tour Packages', href: '/packages' },
+  { label: 'Travel Guides', href: '/travel-guides' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ];

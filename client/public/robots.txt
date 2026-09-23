@@ -1,0 +1,40 @@
+# ==============================================================================
+# Outdoor Vacationz (outdoorvacationz.com) — Production Crawl Directives
+# Strictly adhering to Google Search Essentials & Bing Webmaster Guidelines
+# ==============================================================================
+
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+Disallow: /seo-dashboard
+Disallow: /*?*sort=
+Disallow: /*?*filter=
+
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /favicon.svg
+
+User-agent: Bingbot
+Allow: /
+Disallow: /api/
+Disallow: /seo-dashboard
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /seo-dashboard
+Disallow: /*?*sort=
+Disallow: /*?*filter=
+
+# Crawl Delay
+Crawl-delay: 1
+
+# Modular XML Sitemap Index
+Sitemap: https://outdoorvacationz.com/sitemap.xml
+Sitemap: https://outdoorvacationz.com/sitemaps/sitemap-pages.xml
+Sitemap: https://outdoorvacationz.com/sitemaps/sitemap-tours.xml
+Sitemap: https://outdoorvacationz.com/sitemaps/sitemap-destinations.xml
+Sitemap: https://outdoorvacationz.com/sitemaps/sitemap-locations.xml
+Sitemap: https://outdoorvacationz.com/sitemaps/sitemap-blogs.xml
+Sitemap: https://outdoorvacationz.com/sitemaps/sitemap-guides.xml
+

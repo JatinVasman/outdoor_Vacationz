@@ -17,8 +17,8 @@ export function NotFound() {
           <Link to="/" className="btn-primary-dark">
             Back to Home <ArrowRight size={14} />
           </Link>
-          <Link to="/destinations" className="btn-secondary-dark">
-            Explore Destinations
+          <Link to="/packages" className="btn-secondary-dark">
+            Explore Tour Packages
           </Link>
         </div>
       </div>

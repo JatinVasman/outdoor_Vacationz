@@ -16,6 +16,7 @@ const badgeConfig = {
 
 export function DestinationCard({ destination, featured = false }: Props) {
   const badge = destination.badge ? badgeConfig[destination.badge] : null;
+  const packageSlug = destination.relatedPackageSlugs?.[0] || destination.slug;
 
   if (featured) {
     return (
@@ -84,8 +85,8 @@ export function DestinationCard({ destination, featured = false }: Props) {
               <strong>{destination.startingPrice}</strong>
               <span>/ person</span>
             </div>
-            <Link to={`/destinations/${destination.slug}`} className="dest-featured-cta">
-              Explore {destination.name} <ArrowRight size={14} />
+            <Link to={`/packages/${packageSlug}`} className="dest-featured-cta">
+              Explore {destination.name} Tour <ArrowRight size={14} />
             </Link>
           </div>
         </div>
@@ -127,8 +128,8 @@ export function DestinationCard({ destination, featured = false }: Props) {
             <strong>{destination.startingPrice}</strong>
             <span>· {destination.duration}</span>
           </div>
-          <Link to={`/destinations/${destination.slug}`} className="dest-cta">
-            Explore <ArrowRight size={13} />
+          <Link to={`/packages/${packageSlug}`} className="dest-cta">
+            View Tour <ArrowRight size={13} />
           </Link>
         </div>
       </div>

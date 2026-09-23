@@ -22,7 +22,7 @@ const whyItems = [
 
 const stats = [
   { value: '12,000+', label: 'Happy travellers' },
-  { value: '48', label: 'Countries covered' },
+  { value: '7', label: 'Signature Tour Packages' },
   { value: '4.9★', label: 'Average rating' },
   { value: '10+', label: 'Years of craft' },
 ];

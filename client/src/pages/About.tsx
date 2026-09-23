@@ -4,38 +4,12 @@ import { PageHero } from '../components/layout/PageHero';
 import './About.css';
 
 const stats = [
-  { value: '50+', label: 'Destinations' },
-  { value: '200+', label: 'Experiences' },
+  { value: '7', label: 'Curated Destinations' },
+  { value: '7', label: 'Handcrafted Tours' },
   { value: '1,000+', label: 'Happy Travellers' },
-  { value: '24/7', label: 'Support' },
+  { value: '24/7', label: 'Dedicated Support' },
 ];
 
-const team = [
-  {
-    name: 'Rohan Mehta',
-    role: 'Founder & Head of Travel',
-    bio: 'Former wildlife guide turned travel entrepreneur. Has personally visited 42 countries and designed 300+ itineraries.',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
-  },
-  {
-    name: 'Priya Sharma',
-    role: 'Destination Specialist — Asia',
-    bio: 'Speaks Thai, Japanese, and Bahasa Indonesia. Asia expert with 8 years of ground operations experience.',
-    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b04c?auto=format&fit=crop&w=200&q=80',
-  },
-  {
-    name: 'Ananya Iyer',
-    role: 'Honeymoon & Luxury Planner',
-    bio: 'Specialises in creating bespoke romantic journeys. Has designed over 200 honeymoon packages across the Maldives and Bali.',
-    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80',
-  },
-  {
-    name: 'Vikram Nair',
-    role: 'Adventure & Wildlife Expert',
-    bio: 'PADI Divemaster and certified mountaineer. Leads our adventure and wildlife travel portfolio.',
-    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80',
-  },
-];
 
 const values = [
   'Every itinerary is personally designed — never templated',
@@ -130,25 +104,6 @@ export function About() {
           </div>
         </div>
 
-        {/* Team */}
-        <div className="about-section" data-reveal>
-          <div className="about-values-header">
-            <span className="eyebrow">✦ Our Team</span>
-            <h2 className="heading-lg">The travellers behind the journeys</h2>
-          </div>
-          <div className="about-team-grid">
-            {team.map((member) => (
-              <div key={member.name} className="about-team-card">
-                <img src={member.avatar} alt={member.name} loading="lazy" />
-                <div className="about-team-info">
-                  <h3>{member.name}</h3>
-                  <span>{member.role}</span>
-                  <p>{member.bio}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
 
         {/* Final CTA */}
         <div className="about-cta" data-reveal>

@@ -4,7 +4,16 @@ import { ArrowRight, MapPin, Calendar, Users, Wallet, Palmtree, Home, CheckCircl
 import { PageHero } from '../components/layout/PageHero';
 import './PlanYourTrip.css';
 
-const destinations = ['Bali', 'Maldives', 'Dubai', 'Swiss Alps', 'Kashmir', 'Kyoto', 'Thailand', 'Rajasthan', 'Europe (Multi-city)', 'Kerala', 'Other'];
+const destinations = [
+  'Kerala (5N/6D)',
+  'Vietnam — Phu Quoc & Da Nang (5N/6D)',
+  'Singapore (4N/5D)',
+  'Singapore with Cruise (6N/7D)',
+  'Malaysia — KL & Langkawi (6N/7D)',
+  'Malaysia & Singapore (5N/6D)',
+  'North East Meghalaya (5N/6D)',
+  'Custom / Multi-Destination',
+];
 const styles = ['Adventure', 'Luxury', 'Honeymoon', 'Family', 'Cultural', 'Beach & Island', 'Wildlife', 'Wellness', 'Backpacking'];
 const budgets = ['Under ₹50,000', '₹50,000 – ₹1,00,000', '₹1,00,000 – ₹2,00,000', '₹2,00,000 – ₹5,00,000', 'Above ₹5,00,000', 'Flexible / Not sure'];
 const accommodations = ['Luxury Resort / 5-star', 'Boutique Hotel', 'Heritage Property', 'Beach Villa / Private Villa', 'Standard Hotel (3–4 star)', 'No Preference'];

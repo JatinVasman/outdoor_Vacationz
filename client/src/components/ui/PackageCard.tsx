@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Star, Calendar, MapPin, ArrowRight } from 'lucide-react';
+import { Star, Calendar, MapPin, ArrowRight, Building, Users } from 'lucide-react';
 import type { TravelPackage } from '../../types';
 import './PackageCard.css';
 
@@ -60,6 +60,16 @@ export function PackageCard({ pkg }: Props) {
           <span className="pkg-meta-item">
             <Calendar size={13} /> {pkg.duration}
           </span>
+          {pkg.hotel && (
+            <span className="pkg-meta-item">
+              <Building size={13} /> {pkg.hotel}
+            </span>
+          )}
+          {pkg.guests && (
+            <span className="pkg-meta-item">
+              <Users size={13} /> {pkg.guests}
+            </span>
+          )}
         </div>
 
         <div className="pkg-footer">

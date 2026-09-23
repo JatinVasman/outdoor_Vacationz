@@ -25,8 +25,8 @@ export function FinalCTA() {
             <Link to="/plan-your-trip" className="final-cta-btn-primary">
               Plan My Trip <ArrowRight size={16} />
             </Link>
-            <Link to="/destinations" className="final-cta-btn-secondary">
-              Explore Destinations
+            <Link to="/packages" className="final-cta-btn-secondary">
+              Explore Tour Packages
             </Link>
           </div>
         </div>

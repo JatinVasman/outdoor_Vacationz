@@ -1,0 +1,317 @@
+﻿.locations-page {
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+.locations-container {
+  padding: 48px 0 80px;
+}
+
+/* Region Sections */
+.location-region-group {
+  margin-bottom: 48px;
+}
+
+.location-region-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.location-region-header h2 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0;
+}
+
+.location-region-count {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--teal);
+  background: rgba(13, 148, 136, 0.1);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.location-city-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.location-city-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.location-city-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
+  border-color: var(--teal);
+}
+
+.location-city-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.location-city-name {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0 0 4px;
+}
+
+.location-city-state {
+  font-size: 13px;
+  color: var(--soft);
+}
+
+.location-airport-code {
+  font-size: 12px;
+  font-weight: 800;
+  background: #f1f5f9;
+  color: #334155;
+  padding: 4px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.05em;
+}
+
+.location-airport-name {
+  font-size: 12.5px;
+  color: var(--soft);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.location-connections-summary {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.location-conn-pill {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #f8fafc;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ City Detail Page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.city-detail-page {
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+.city-detail-header {
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  padding: 44px 0 36px;
+}
+
+.city-detail-title {
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.city-detail-lead {
+  font-size: 16px;
+  color: var(--soft);
+  max-width: 800px;
+  line-height: 1.6;
+}
+
+.city-detail-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 48px;
+  padding: 48px 0 80px;
+  align-items: start;
+}
+
+.city-detail-main {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.city-section {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 32px;
+}
+
+.city-section h2 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.city-section p {
+  font-size: 15px;
+  color: #334155;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+/* Flight connection cards */
+.city-conn-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.city-conn-card {
+  background: #f8fafc;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 20px;
+}
+
+.city-conn-card h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.city-conn-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.city-conn-badge.direct {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.city-conn-badge.connecting {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.city-conn-time {
+  font-size: 13px;
+  color: var(--teal);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.city-conn-notes {
+  font-size: 12.5px;
+  color: var(--soft);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Local FAQ */
+.city-faq-item {
+  background: #f8fafc;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  margin-bottom: 12px;
+}
+
+.city-faq-item h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.city-faq-item p {
+  font-size: 14px;
+  color: var(--soft);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Sidebar */
+.city-sidebar {
+  position: sticky;
+  top: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.city-sidebar-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 24px;
+}
+
+.city-sidebar-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+@media (max-width: 991px) {
+  .location-city-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .city-detail-layout {
+    grid-template-columns: 1fr;
+  }
+  .city-conn-grid {
+    grid-template-columns: 1fr;
+  }
+  .city-sidebar {
+    position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .location-city-grid {
+    grid-template-columns: 1fr;
+  }
+  .city-detail-title {
+    font-size: 24px;
+  }
+  .city-section {
+    padding: 20px;
+  }
+}
+

@@ -12,14 +12,14 @@ export function DestinationsSection() {
       <div className="container">
         <div className="section-header" data-reveal>
           <div className="section-header-left">
-            <span className="eyebrow">✦ Popular Destinations</span>
-            <h2 className="heading-lg">Explore the world with us</h2>
+            <span className="eyebrow">✦ Tour Destinations</span>
+            <h2 className="heading-lg">Explore our 7 signature destinations</h2>
             <p className="text-soft" style={{ fontSize: '14.5px', marginTop: '4px' }}>
-              Curated by our planners · updated weekly
+              Authentic itineraries with vetted hotels, private transfers &amp; guided sightseeing
             </p>
           </div>
-          <Link to="/destinations" className="section-link">
-            View all 48 <ArrowRight size={15} />
+          <Link to="/packages" className="section-link">
+            View all 7 packages <ArrowRight size={15} />
           </Link>
         </div>
 
@@ -31,7 +31,7 @@ export function DestinationsSection() {
         {/* Trending Destinations Grid */}
         <div className="destinations-grid-section" data-reveal data-reveal-delay="2">
           <div className="destinations-grid-header">
-            <h3 className="destinations-subheading">More Trending Destinations</h3>
+            <h3 className="destinations-subheading">All Curated Tour Destinations</h3>
           </div>
           <div className="destinations-row">
             {rest.slice(0, 6).map((dest) => (

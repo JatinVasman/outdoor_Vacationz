@@ -14,8 +14,14 @@ const initialForm: EnquiryPayload = {
 };
 
 const popularDestinations = [
-  'Bali', 'Maldives', 'Dubai', 'Swiss Alps', 'Kashmir',
-  'Kyoto, Japan', 'Thailand', 'Rajasthan', 'Kerala', 'Europe',
+  'Kerala (5N/6D)',
+  'Vietnam — Phu Quoc & Da Nang (5N/6D)',
+  'Singapore (4N/5D)',
+  'Singapore with Cruise (6N/7D)',
+  'Malaysia — KL & Langkawi (6N/7D)',
+  'Malaysia & Singapore (5N/6D)',
+  'North East Meghalaya (5N/6D)',
+  'Custom Itinerary',
 ];
 
 export function ContactSection() {

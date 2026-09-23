@@ -3,6 +3,7 @@
 /* ─── Design Tokens ─── */
 :root {
   --teal: #0e7c6b;
+  --primary: #0e7c6b;   /* alias for --teal */
   --teal-dark: #0a5c50;
   --teal-light: #e8f3f0;
   --teal-mid: #c4e0da;
@@ -37,6 +38,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 body {
@@ -72,6 +75,11 @@ input, select, textarea {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
+}
+
+/* Offset for fixed pill navbar (≈72px pill + 14px top = 86px) */
+main {
+  padding-top: 86px;
 }
 
 /* ─── Section Base ─── */

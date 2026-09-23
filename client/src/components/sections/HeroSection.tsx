@@ -1,66 +1,85 @@
-import { useState, useEffect } from 'react';
-import { Search, MapPin, Calendar, Users, Wallet, ShieldCheck, Headphones, BadgeCheck, Sparkles, Star, Compass } from 'lucide-react';
+import { useState, useEffect, useCallback, useRef } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Search, MapPin, Calendar, Users, Wallet, ShieldCheck, Headphones, BadgeCheck, Sparkles, ArrowRight, Star, Compass, ChevronLeft, ChevronRight } from 'lucide-react';
 import './HeroSection.css';
 
 interface HeroDestination {
   name: string;
   country: string;
-  tagline: string;
+  price: string;
   image: string;
   thumbnail: string;
-  price: string;
-  rating: string;
+  packageSlug: string;
 }
 
 const heroDestinations: HeroDestination[] = [
   {
-    name: 'Bali',
-    country: 'Indonesia',
-    tagline: 'Emerald Terraces & Sacred Coasts',
-    image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1920&q=85',
-    thumbnail: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=160&q=80',
-    price: '₹68,000',
-    rating: '4.9',
+    name: 'Kerala',
+    country: 'India',
+    price: '₹45,000',
+    image: '/images/tours/kerala-munnar.webp',
+    thumbnail: '/images/tours/kerala-munnar.webp',
+    packageSlug: 'kerala',
   },
   {
-    name: 'Maldives',
-    country: 'Indian Ocean',
-    tagline: 'Overwater Villas & Turquoise Lagoons',
-    image: 'https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=1920&q=85',
-    thumbnail: 'https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=160&q=80',
-    price: '₹1,20,000',
-    rating: '5.0',
+    name: 'Singapore',
+    country: 'Singapore',
+    price: '₹53,000',
+    image: '/images/tours/singapore.webp',
+    thumbnail: '/images/tours/singapore.webp',
+    packageSlug: 'singapore',
   },
   {
-    name: 'Swiss Alps',
-    country: 'Switzerland',
-    tagline: 'Alpine Peaks & Panoramic Glaciers',
-    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1920&q=85',
-    thumbnail: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=160&q=80',
-    price: '₹1,85,000',
-    rating: '4.9',
+    name: 'Vietnam',
+    country: 'Vietnam',
+    price: '₹54,000',
+    image: '/images/tours/vietnam-phu-quoc-danang.webp',
+    thumbnail: '/images/tours/vietnam-phu-quoc-danang.webp',
+    packageSlug: 'vietnam',
   },
   {
-    name: 'Kyoto',
-    country: 'Japan',
-    tagline: 'Bamboo Groves & Historic Shrines',
-    image: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?auto=format&fit=crop&w=1920&q=85',
-    thumbnail: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?auto=format&fit=crop&w=160&q=80',
-    price: '₹1,45,000',
-    rating: '4.8',
+    name: 'Malaysia (KL + Langkawi)',
+    country: 'Malaysia',
+    price: '₹37,000',
+    image: '/images/tours/malaysia-kuala-lumpur-langkawi.webp',
+    thumbnail: '/images/tours/malaysia-kuala-lumpur-langkawi.webp',
+    packageSlug: 'malaysia-kuala-lumpur-langkawi',
   },
   {
-    name: 'Dubai',
-    country: 'UAE',
-    tagline: 'Golden Dunes & Futuristic Luxury',
-    image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1920&q=85',
-    thumbnail: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=160&q=80',
-    price: '₹75,000',
-    rating: '4.9',
+    name: 'Singapore + Cruise',
+    country: 'Singapore & Malaysia',
+    price: '₹78,000',
+    image: '/images/tours/singapore-genting-dream-cruise.webp',
+    thumbnail: '/images/tours/singapore-genting-dream-cruise.webp',
+    packageSlug: 'singapore-cruise',
+  },
+  {
+    name: 'Malaysia + Singapore',
+    country: 'Malaysia & Singapore',
+    price: '₹53,000',
+    image: '/images/tours/malaysia-singapore.webp',
+    thumbnail: '/images/tours/malaysia-singapore.webp',
+    packageSlug: 'malaysia-singapore',
+  },
+  {
+    name: 'North East Meghalaya',
+    country: 'India',
+    price: '₹33,000',
+    image: '/images/tours/north-east-meghalaya.webp',
+    thumbnail: '/images/tours/north-east-meghalaya.webp',
+    packageSlug: 'north-east',
   },
 ];
 
-const trendingDestinations = ['Bali', 'Dubai', 'Maldives', 'Kashmir', 'Thailand', 'Switzerland'];
+const trendingDestinations = [
+  'Kerala',
+  'Vietnam',
+  'Singapore',
+  'Singapore + Cruise',
+  'Malaysia (KL + Langkawi)',
+  'Malaysia + Singapore',
+  'North East Meghalaya',
+];
 
 const trustBadges = [
   { icon: <ShieldCheck size={16} />, label: 'Zero hidden fees', sub: 'Transparent pricing' },
@@ -68,40 +87,128 @@ const trustBadges = [
   { icon: <BadgeCheck size={16} />, label: 'Flexible cancellation', sub: 'Up to 21 days prior' },
 ];
 
-const tabOptions = ['Tours', 'Hotels', 'Activities'] as const;
+const tabOptions = ['Tours', 'Activities'] as const;
 
 export function HeroSection() {
+  const navigate = useNavigate();
   const [activeHeroIndex, setActiveHeroIndex] = useState(0);
   const [activeTab, setActiveTab] = useState<(typeof tabOptions)[number]>('Tours');
   const [destination, setDestination] = useState('');
   const [submitted, setSubmitted] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
-
-  // Auto-rotate every 7 seconds, pausing on hover or resetting on selection
-  useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(() => {
-      setActiveHeroIndex((prev) => (prev + 1) % heroDestinations.length);
-    }, 7000);
-    return () => clearInterval(interval);
-  }, [activeHeroIndex, isPaused]);
+  const stripRef = useRef<HTMLDivElement>(null);
 
   const activeDest = heroDestinations[activeHeroIndex];
 
-  const handleSelectHeroDestination = (index: number) => {
-    setActiveHeroIndex(index);
-    setDestination(heroDestinations[index].name);
+  const handleSelectHeroDestination = useCallback((idx: number) => {
+    setActiveHeroIndex(idx);
+  }, []);
+
+  const scrollStrip = (direction: 'left' | 'right') => {
+    if (!stripRef.current) return;
+    const amount = 240;
+    stripRef.current.scrollBy({
+      left: direction === 'left' ? -amount : amount,
+      behavior: 'smooth',
+    });
   };
+
+  // Auto-advance slideshow every 6 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveHeroIndex((prev) => (prev + 1) % heroDestinations.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // Enable horizontal mouse wheel scrolling and click-and-drag scrolling on the tours strip
+  useEffect(() => {
+    const el = stripRef.current;
+    if (!el) return;
+
+    const onWheel = (e: WheelEvent) => {
+      if (e.deltaY !== 0) {
+        e.preventDefault();
+        el.scrollLeft += e.deltaY;
+      }
+    };
+    el.addEventListener('wheel', onWheel, { passive: false });
+
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    const onMouseDown = (e: MouseEvent) => {
+      isDown = true;
+      startX = e.clientX;
+      scrollLeft = el.scrollLeft;
+      el.style.cursor = 'grabbing';
+    };
+
+    const onMouseLeave = () => {
+      isDown = false;
+      el.style.cursor = '';
+    };
+
+    const onMouseUp = () => {
+      isDown = false;
+      el.style.cursor = '';
+    };
+
+    const onMouseMove = (e: MouseEvent) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const walk = (e.clientX - startX) * 1.5;
+      el.scrollLeft = scrollLeft - walk;
+    };
+
+    el.addEventListener('mousedown', onMouseDown);
+    el.addEventListener('mouseleave', onMouseLeave);
+    el.addEventListener('mouseup', onMouseUp);
+    el.addEventListener('mousemove', onMouseMove);
+
+    return () => {
+      el.removeEventListener('wheel', onWheel);
+      el.removeEventListener('mousedown', onMouseDown);
+      el.removeEventListener('mouseleave', onMouseLeave);
+      el.removeEventListener('mouseup', onMouseUp);
+      el.removeEventListener('mousemove', onMouseMove);
+    };
+  }, []);
+
+  // Ensure active tour tab remains visible within the scrollable strip without scrolling ancestors
+  useEffect(() => {
+    const el = stripRef.current;
+    if (!el) return;
+    const btn = el.children[activeHeroIndex] as HTMLElement;
+    if (btn) {
+      const targetScroll = btn.offsetLeft - el.offsetWidth / 2 + btn.offsetWidth / 2;
+      el.scrollTo({
+        left: Math.max(0, targetScroll),
+        behavior: 'smooth',
+      });
+    }
+  }, [activeHeroIndex]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    const targetEl = document.querySelector('[data-dest-slug]') as HTMLElement;
-    if (destination && targetEl) {
-      const match = document.querySelector(`[data-dest-slug*="${destination.toLowerCase()}"]`) as HTMLElement;
-      if (match) match.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      else document.getElementById('destinations')?.scrollIntoView({ behavior: 'smooth' });
+    if (destination) {
+      const q = destination.toLowerCase().trim();
+      const match = heroDestinations.find(
+        (d) =>
+          d.name.toLowerCase().includes(q) ||
+          d.packageSlug.includes(q) ||
+          d.country.toLowerCase().includes(q)
+      );
+      if (match) {
+        navigate(`/packages/${match.packageSlug}`);
+        return;
+      }
+    }
+    const pkgSection = document.getElementById('packages');
+    if (pkgSection) {
+      pkgSection.scrollIntoView({ behavior: 'smooth' });
     } else {
-      document.getElementById('destinations')?.scrollIntoView({ behavior: 'smooth' });
+      navigate('/packages');
     }
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 2000);
@@ -109,62 +216,78 @@ export function HeroSection() {
 
   return (
     <section className="hero" id="hero">
-      <div className="container">
-        {/* ── 1. Image-Led Editorial Travel Stage ── */}
-        <div
-          className="hero-stage"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
-          {/* Layered destination backdrops for smooth crossfade */}
-          {heroDestinations.map((item, idx) => (
+      <div className="hero-inner">
+        {/* ══════ 1. Full-Bleed Background Stage ══════ */}
+        <div className="hero-stage">
+          {/* Background images */}
+          {heroDestinations.map((dest, idx) => (
             <div
-              key={item.name}
-              className={`hero-backdrop ${idx === activeHeroIndex ? 'active' : ''}`}
-              style={{ backgroundImage: `url(${item.image})` }}
-              role="img"
-              aria-label={`${item.name}, ${item.country}`}
+              key={dest.name}
+              className={`hero-bg ${idx === activeHeroIndex ? 'active' : ''}`}
+              style={{ backgroundImage: `url(${dest.image})` }}
+              aria-hidden="true"
             />
           ))}
+          <div className="hero-overlay" aria-hidden="true" />
 
-          {/* Filmic atmospheric darkening overlay */}
-          <div className="hero-stage-overlay" />
-
-          {/* Stage inner content */}
-          <div className="hero-stage-inner">
-            {/* Top Bar: Eyebrow + Live Location Badge */}
+          {/* Stage content */}
+          <div className="hero-stage-content">
+            {/* Top-left: Location Pill linking to package */}
             <div className="hero-stage-top">
-              <span className="hero-eyebrow">
-                <Sparkles size={13} />
-                Handcrafted Journeys & Stays
-              </span>
-
-              <div className="hero-location-pill">
+              <Link
+                to={`/packages/${activeDest.packageSlug}`}
+                className="hero-location-pill"
+                title={`Explore ${activeDest.name} Package`}
+              >
                 <MapPin size={13} />
                 <span className="hero-loc-title">{activeDest.name}, {activeDest.country}</span>
-                <span className="hero-loc-sep">•</span>
+                <span className="hero-loc-sep">·</span>
                 <span className="hero-loc-price">From {activeDest.price}</span>
-              </div>
+                <ArrowRight size={12} style={{ marginLeft: 4 }} />
+              </Link>
             </div>
 
-            {/* Center: Main Editorial Message */}
+            {/* Center: Appealing & Refined Editorial Message */}
             <div className="hero-stage-center">
               <h1 className="hero-headline">
-                Travel Further.<br />
-                <em>Experience More.</em>
+                <span className="hero-headline-primary">Travel Further.</span>
+                <span className="hero-headline-secondary">Experience More.</span>
               </h1>
               <p className="hero-sub">
-                Curated itineraries and boutique stays across the world’s most inspiring destinations.
+                7 handcrafted journeys across India &amp; Southeast Asia.
               </p>
             </div>
 
-            {/* Bottom of Stage: Destination Quick-Select Bar */}
+            {/* Bottom of Stage: Destination Quick-Select Bar with Scroll Controls */}
             <div className="hero-stage-bottom">
               <div className="hero-dest-selector">
-                <span className="hero-dest-selector-label">
-                  <Compass size={13} /> Explore Destinations:
-                </span>
-                <div className="hero-dest-strip">
+                <div className="hero-dest-selector-header">
+                  <span className="hero-dest-selector-label">
+                    <Compass size={13} /> Explore 7 Tours:
+                  </span>
+                  <div className="hero-dest-arrows">
+                    <button
+                      type="button"
+                      className="hero-strip-arrow"
+                      onClick={() => scrollStrip('left')}
+                      aria-label="Previous tour"
+                      title="Scroll left"
+                    >
+                      <ChevronLeft size={16} />
+                    </button>
+                    <button
+                      type="button"
+                      className="hero-strip-arrow"
+                      onClick={() => scrollStrip('right')}
+                      aria-label="Next tour"
+                      title="Scroll right"
+                    >
+                      <ChevronRight size={16} />
+                    </button>
+                  </div>
+                </div>
+
+                <div className="hero-dest-strip" ref={stripRef}>
                   {heroDestinations.map((dest, idx) => {
                     const isSelected = idx === activeHeroIndex;
                     return (
@@ -173,7 +296,7 @@ export function HeroSection() {
                         type="button"
                         className={`hero-dest-tab ${isSelected ? 'active' : ''}`}
                         onClick={() => handleSelectHeroDestination(idx)}
-                        title={`View ${dest.name}, ${dest.country}`}
+                        title={`Select ${dest.name} (${dest.country})`}
                       >
                         <img
                           src={dest.thumbnail}
@@ -185,7 +308,7 @@ export function HeroSection() {
                           <span className="hero-dest-tab-name">{dest.name}</span>
                           <span className="hero-dest-tab-country">{dest.country}</span>
                         </div>
-                        <span className="hero-dest-tab-badge">{dest.price}</span>
+                        <span className="hero-dest-tab-badge">From {dest.price}</span>
                       </button>
                     );
                   })}
@@ -195,7 +318,7 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* ── 2. Integrated Horizontal Booking & Search Console ── */}
+        {/* ══════ 2. Integrated Horizontal Booking & Search Console ══════ */}
         <div className="hero-search-wrap">
           <div className="search-console">
             {/* Tab navigation */}
@@ -286,7 +409,7 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* ── 3. Supporting Proof & Trust Highlights ── */}
+        {/* ══════ 3. Supporting Proof & Trust Highlights ══════ */}
         <div className="hero-footer-bar">
           <div className="hero-social-proof">
             <div className="hero-avatars">

@@ -133,7 +133,7 @@ export function Contact() {
                       </div>
                       <div className="contact-form-field">
                         <label>Destination</label>
-                        <input name="destination" value={form.destination} onChange={handleChange} placeholder="Bali, Maldives…" />
+                        <input name="destination" value={form.destination} onChange={handleChange} placeholder="Kerala, Singapore, Vietnam…" />
                       </div>
                     </div>
                     <div className="contact-form-row">
