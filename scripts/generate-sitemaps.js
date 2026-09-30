@@ -184,3 +184,14 @@ console.log(`Locations (States + Indexable Hubs): ${locationItems.length}`);
 console.log(`Blogs / Travel Guides: ${guideItems.length}`);
 console.log(`Files generated: sitemap.xml, sitemap_index.xml, sitemap-all.xml, modular sitemaps`);
 console.log(`======================================================\n`);
+
+// 8. WordPress-style alias sitemaps for Google Search Console compatibility
+// Google Search Console may reference /page-sitemap.xml and /post-sitemap.xml
+// from a previously indexed WordPress sitemap. Write physical copies so they
+// are served as valid XML regardless of redirect configuration.
+fs.writeFileSync(path.join(publicDir, 'page-sitemap.xml'), pagesXml, 'utf8');
+fs.writeFileSync(path.join(sitemapsDir, 'page-sitemap.xml'), pagesXml, 'utf8');
+fs.writeFileSync(path.join(publicDir, 'post-sitemap.xml'), guidesXml, 'utf8');
+fs.writeFileSync(path.join(sitemapsDir, 'post-sitemap.xml'), guidesXml, 'utf8');
+console.log(`[Alias Sitemaps] Generated page-sitemap.xml and post-sitemap.xml for Google Search Console compatibility.`);
+

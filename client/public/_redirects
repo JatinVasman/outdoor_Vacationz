@@ -5,5 +5,10 @@
 /sitemaps           /sitemap.xml         301
 /sitemaps/          /sitemap.xml         301
 
-# SPA catch-all fallback
+# WordPress-style sitemap aliases (for Google Search Console compatibility)
+/page-sitemap.xml   /sitemap-pages.xml   301
+/post-sitemap.xml   /sitemap-blogs.xml   301
+
+# SPA catch-all fallback — XML files served as static assets, not routed to SPA
+/*.xml              /:splat.xml          200
 /*                  /index.html          200

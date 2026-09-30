@@ -25,6 +25,16 @@
       "source": "/sitemaps/",
       "destination": "/sitemap.xml",
       "permanent": true
+    },
+    {
+      "source": "/page-sitemap.xml",
+      "destination": "/sitemap-pages.xml",
+      "permanent": true
+    },
+    {
+      "source": "/post-sitemap.xml",
+      "destination": "/sitemap-blogs.xml",
+      "permanent": true
     }
   ],
   "headers": [
@@ -52,7 +62,7 @@
       "destination": "/api/$1"
     },
     {
-      "source": "/(.*)",
+      "source": "/((?!.*\.xml$).*)",
       "destination": "/index.html"
     }
   ]
