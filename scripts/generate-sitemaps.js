@@ -137,27 +137,27 @@ const totalSitemapUrls = pages.length + tourSlugs.length + destSlugs.length + lo
 const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
-    <loc>${BASE_URL}/sitemaps/sitemap-pages.xml</loc>
+    <loc>${BASE_URL}/sitemap-pages.xml</loc>
     <lastmod>${TODAY}</lastmod>
   </sitemap>
   <sitemap>
-    <loc>${BASE_URL}/sitemaps/sitemap-tours.xml</loc>
+    <loc>${BASE_URL}/sitemap-tours.xml</loc>
     <lastmod>${TODAY}</lastmod>
   </sitemap>
   <sitemap>
-    <loc>${BASE_URL}/sitemaps/sitemap-destinations.xml</loc>
+    <loc>${BASE_URL}/sitemap-destinations.xml</loc>
     <lastmod>${TODAY}</lastmod>
   </sitemap>
   <sitemap>
-    <loc>${BASE_URL}/sitemaps/sitemap-locations.xml</loc>
+    <loc>${BASE_URL}/sitemap-locations.xml</loc>
     <lastmod>${TODAY}</lastmod>
   </sitemap>
   <sitemap>
-    <loc>${BASE_URL}/sitemaps/sitemap-blogs.xml</loc>
+    <loc>${BASE_URL}/sitemap-blogs.xml</loc>
     <lastmod>${TODAY}</lastmod>
   </sitemap>
   <sitemap>
-    <loc>${BASE_URL}/sitemaps/sitemap-guides.xml</loc>
+    <loc>${BASE_URL}/sitemap-guides.xml</loc>
     <lastmod>${TODAY}</lastmod>
   </sitemap>
 </sitemapindex>`;
