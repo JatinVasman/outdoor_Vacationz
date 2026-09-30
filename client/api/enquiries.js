@@ -1,5 +1,3 @@
-const { Resend } = require('resend');
-
 const DEFAULT_TO_EMAIL = 'contact.outdoorvacationz@gmail.com';
 const DEFAULT_FROM_EMAIL = 'Outdoor Vacationz <onboarding@resend.dev>';
 
@@ -30,7 +28,23 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const payload = typeof req.body === 'string' ? JSON.parse(req.body) : req.body || {};
+    let payload = req.body;
+    if (typeof payload === 'string') {
+      try {
+        payload = JSON.parse(payload);
+      } catch {
+        payload = {};
+      }
+    } else if (payload && Buffer.isBuffer(payload)) {
+      try {
+        payload = JSON.parse(payload.toString('utf8'));
+      } catch {
+        payload = {};
+      }
+    } else if (!payload) {
+      payload = {};
+    }
+
     const {
       name,
       email,
@@ -188,32 +202,40 @@ module.exports = async (req, res) => {
     }
 
     try {
-      const resend = new Resend(apiKey);
-      const { data, error } = await resend.emails.send({
-        from: fromEmail,
-        to: [toEmail],
-        replyTo: email,
-        subject: `✨ New Travel Enquiry from ${name} [${tripDestination}] - Outdoor Vacationz`,
-        html,
+      const response = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          from: fromEmail,
+          to: [toEmail],
+          reply_to: email,
+          subject: `✨ New Travel Enquiry from ${name} [${tripDestination}] - Outdoor Vacationz`,
+          html,
+        }),
       });
 
-      if (error) {
-        console.error('[Resend Error]', error);
+      const resendData = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        console.error('[Resend REST API Error]', response.status, resendData);
         return res.status(200).json({
           success: true,
           message: 'Enquiry received! Our team will contact you within 24 hours.',
-          data: { note: error.message },
+          data: { simulated: true, note: resendData?.message || 'Dispatch queued' },
         });
       }
 
-      console.log(`[Resend Success] Email dispatched to ${toEmail}. Resend ID: ${data?.id}`);
+      console.log(`[Resend Success] Email dispatched to ${toEmail}. Resend ID: ${resendData?.id}`);
       return res.status(201).json({
         success: true,
         message: 'Enquiry received! Our team will contact you within 24 hours.',
-        data: { id: data?.id },
+        data: { id: resendData?.id },
       });
     } catch (sendErr) {
-      console.error('[Resend Dispatch Error]', sendErr);
+      console.error('[Resend Fetch Exception]', sendErr);
       return res.status(200).json({
         success: true,
         message: 'Enquiry received! Our team will contact you within 24 hours.',
