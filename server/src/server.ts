@@ -36,11 +36,12 @@ app.use(
 
 app.use(express.json());
 
-// Routes
+// Routes - support both /api prefix and root prefix
 app.use('/api/enquiries', enquiryRouter);
+app.use('/enquiries', enquiryRouter);
 
 // Health check
-app.get('/api/health', (_req, res) => {
+const healthCheck = (_req: express.Request, res: express.Response) => {
   res.json({
     status: 'ok',
     service: 'Outdoor Vacationz API',
@@ -50,7 +51,9 @@ app.get('/api/health', (_req, res) => {
     },
     timestamp: new Date().toISOString(),
   });
-});
+};
+app.get('/api/health', healthCheck);
+app.get('/health', healthCheck);
 
 // Start local server when not in Vercel serverless environment
 if (!process.env.VERCEL) {
