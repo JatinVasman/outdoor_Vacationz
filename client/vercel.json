@@ -62,7 +62,7 @@
       "destination": "/api/$1"
     },
     {
-      "source": "/((?!.*\.xml$).*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ]
