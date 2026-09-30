@@ -1,1 +1,9 @@
-/*    /index.html   200
+# Redirect common sitemap shorthand variations to valid XML sitemap
+/sitemap            /sitemap.xml         301
+/sitemap/           /sitemap.xml         301
+/sitemap.html       /sitemap.xml         301
+/sitemaps           /sitemap.xml         301
+/sitemaps/          /sitemap.xml         301
+
+# SPA catch-all fallback
+/*                  /index.html          200

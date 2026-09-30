@@ -591,8 +591,9 @@ for (const group of statesData) {
   }
 }
 
-// Generate the JSON file
-fs.writeFileSync(path.join(seoDir, 'india-city-database.json'), JSON.stringify(allCityRecords, null, 2), 'utf8');
+// Generate the JSON file in client/src/data
+const clientCityJsonPath = path.join(__dirname, '..', 'client', 'src', 'data', 'indiaCityDatabase.json');
+fs.writeFileSync(clientCityJsonPath, JSON.stringify(allCityRecords, null, 2), 'utf8');
 
-console.log(`Successfully generated ${allCityRecords.length} Indian city records in /SEO/india-city-database.json!`);
+console.log(`Successfully generated ${allCityRecords.length} Indian city records in ${clientCityJsonPath}!`);
 console.log(`Indexable cities count: ${indexableCount}`);

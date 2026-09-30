@@ -28,11 +28,23 @@ export function Navbar() {
     setMenuOpen(false);
   }, [location.pathname]);
 
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    setMenuOpen(false);
+    if (location.pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const heroEl = document.getElementById('hero');
+      if (heroEl) {
+        heroEl.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <div className={`navbar-wrapper ${scrolled ? 'scrolled' : ''} ${isHome ? 'on-home' : 'on-inner'}`}>
       <nav className="navbar-pill">
         {/* Logo */}
-        <Link to="/" className="navbar-logo">
+        <Link to="/" className="navbar-logo" onClick={handleLogoClick} title="Outdoor Vacationz - Home">
           <span className="navbar-logo-icon">
             <Plane size={18} strokeWidth={2.5} />
           </span>

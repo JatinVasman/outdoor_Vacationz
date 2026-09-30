@@ -9,8 +9,9 @@ if (!fs.existsSync(seoDir)) {
 // Load existing base
 const baseScript = require('./build-india-city-database.js');
 
-// Read current generated json
-const currentCities = JSON.parse(fs.readFileSync(path.join(seoDir, 'india-city-database.json'), 'utf8'));
+// Read current generated json directly from client data
+const clientJsonPath = path.join(__dirname, '..', 'client', 'src', 'data', 'indiaCityDatabase.json');
+const currentCities = JSON.parse(fs.readFileSync(clientJsonPath, 'utf8'));
 
 // Additional deep coverage across all states to exceed 450+ cities
 const additionalStatesCoverage = [
@@ -315,11 +316,7 @@ for (const grp of additionalStatesCoverage) {
   }
 }
 
-// Write the enlarged database to /SEO/india-city-database.json
-fs.writeFileSync(path.join(seoDir, 'india-city-database.json'), JSON.stringify(currentCities, null, 2), 'utf8');
-
-// Also write a TypeScript/client version so client can import it dynamically
-const clientJsonPath = path.join(__dirname, '..', 'client', 'src', 'data', 'indiaCityDatabase.json');
+// Write the enlarged database to client/src/data/indiaCityDatabase.json
 fs.writeFileSync(clientJsonPath, JSON.stringify(currentCities, null, 2), 'utf8');
 
 console.log(`TOTAL EXPANDED CITIES: ${currentCities.length}`);

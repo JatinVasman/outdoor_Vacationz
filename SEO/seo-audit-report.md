@@ -1,6 +1,6 @@
 # Outdoor Vacationz — Automated SEO Quality & Health Audit Report
 
-**Generated At:** `2026-09-23T03:15:01.451Z`  
+**Generated At:** `2026-09-30T11:03:40.639Z`  
 **Site:** [https://outdoorvacationz.com](https://outdoorvacationz.com/)  
 **Audit Scope:** 714 Blog Content Records, 457 Indian City Locations, 7 Tour Packages, 7 Destination Authority Hubs, Modular XML Sitemaps, Robots.txt & Breadcrumbs/JSON-LD Schemas.
 
@@ -20,7 +20,7 @@
 | **Missing Meta Titles/Descs** | ✅ PASS | **714 Missing** | 0 Missing | Full Dynamic SEO Coverage |
 | **Drafts In XML Sitemaps** | ✅ PASS | **0 Leaks** | 0 Drafts Allowed | Strict Crawl Budget Protection |
 | **Noindex In XML Sitemaps** | ✅ PASS | **0 Leaks** | 0 Noindex Allowed | Strict Index Integrity |
-| **Total Indexable Sitemap URLs** | ✅ PASS | **461 URLs** | > 300 Clean URLs | High-Authority Crawl Graph |
+| **Total Indexable Sitemap URLs** | ✅ PASS | **460 URLs** | > 300 Clean URLs | High-Authority Crawl Graph |
 
 ---
 
@@ -127,7 +127,7 @@ The site implements a 3-layer data-driven location hierarchy:
 - `/sitemaps/sitemap-destinations.xml` (7 Destination Authority Hubs)
 - `/sitemaps/sitemap-locations.xml` (169 URLs = 34 State Hubs + 135 Indexable Cities)
 - `/sitemaps/sitemap-blogs.xml` (270 Clean Indexable Articles)
-- **Total Validated Sitemaps URLs:** `461`
+- **Total Validated Sitemaps URLs:** `460`
 - **Draft or Noindex Leakage:** `0` (Strictly 0%)
 
 ### Search Engine Crawl Controls (robots.txt):

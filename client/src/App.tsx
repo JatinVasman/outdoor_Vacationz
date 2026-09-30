@@ -3,6 +3,7 @@ import { useScrollReveal } from './hooks/useScrollReveal';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { ScrollToTop } from './components/layout/ScrollToTop';
+import { WhatsAppButton } from './components/layout/WhatsAppButton';
 
 // Core Pages
 import { Home } from './pages/Home';
@@ -70,6 +71,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      <WhatsAppButton />
     </>
   );
 }

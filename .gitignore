@@ -29,3 +29,9 @@ client/.vite/
 
 # Root screenshot artifacts
 /*.png
+
+# Documents & Backups
+*.docx
+*.bak
+*.tmp
+scratch_*

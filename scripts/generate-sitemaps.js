@@ -32,10 +32,9 @@ function writeSitemapFile(filename, content) {
   fs.writeFileSync(path.join(publicDir, filename), content, 'utf8');
 }
 
-// 1. Static Pages
+// 1. Static Pages (strictly canonical URLs, omitting /destinations which redirects to /packages)
 const pages = [
   { path: '', freq: 'daily', priority: '1.0' },
-  { path: '/destinations', freq: 'weekly', priority: '0.9' },
   { path: '/packages', freq: 'weekly', priority: '0.9' },
   { path: '/travel-guides', freq: 'daily', priority: '0.9' },
   { path: '/locations', freq: 'weekly', priority: '0.9' },
@@ -44,9 +43,8 @@ const pages = [
   { path: '/plan-your-trip', freq: 'monthly', priority: '0.8' },
 ];
 
-const pagesXml = wrapUrlSet(
-  pages.map((p) => buildUrlXml(`${BASE_URL}${p.path}`, TODAY, p.freq, p.priority))
-);
+const pageItems = pages.map((p) => buildUrlXml(`${BASE_URL}${p.path}`, TODAY, p.freq, p.priority));
+const pagesXml = wrapUrlSet(pageItems);
 writeSitemapFile('sitemap-pages.xml', pagesXml);
 console.log(`[Pages Sitemap] Generated with ${pages.length} URLs.`);
 
@@ -61,9 +59,8 @@ const tourSlugs = [
   'vietnam',
 ];
 
-const toursXml = wrapUrlSet(
-  tourSlugs.map((slug) => buildUrlXml(`${BASE_URL}/packages/${slug}`, TODAY, 'weekly', '0.9'))
-);
+const tourItems = tourSlugs.map((slug) => buildUrlXml(`${BASE_URL}/packages/${slug}`, TODAY, 'weekly', '0.9'));
+const toursXml = wrapUrlSet(tourItems);
 writeSitemapFile('sitemap-tours.xml', toursXml);
 console.log(`[Tours Sitemap] Generated with ${tourSlugs.length} URLs.`);
 
@@ -78,9 +75,8 @@ const destSlugs = [
   'vietnam',
 ];
 
-const destinationsXml = wrapUrlSet(
-  destSlugs.map((slug) => buildUrlXml(`${BASE_URL}/destinations/${slug}`, TODAY, 'weekly', '0.9'))
-);
+const destItems = destSlugs.map((slug) => buildUrlXml(`${BASE_URL}/destinations/${slug}`, TODAY, 'weekly', '0.9'));
+const destinationsXml = wrapUrlSet(destItems);
 writeSitemapFile('sitemap-destinations.xml', destinationsXml);
 console.log(`[Destinations Sitemap] Generated with ${destSlugs.length} URLs.`);
 
@@ -107,7 +103,7 @@ const cityUrls = indexableCities.map((city) =>
     `${BASE_URL}/locations/${city.stateSlug}/${city.slug}`,
     TODAY,
     'monthly',
-    city.tier.includes('Tier 1') ? '0.85' : '0.75'
+    city.tier && city.tier.includes('Tier 1') ? '0.85' : '0.75'
   )
 );
 
@@ -121,7 +117,7 @@ const guidesDbPath = path.join(__dirname, '..', 'client', 'src', 'data', 'travel
 const guidesDatabase = JSON.parse(fs.readFileSync(guidesDbPath, 'utf8'));
 
 const indexableGuides = guidesDatabase.filter((g) => g.indexable === true && g.status !== 'DRAFT');
-const guideUrls = indexableGuides.map((guide) =>
+const guideItems = indexableGuides.map((guide) =>
   buildUrlXml(
     `${BASE_URL}/travel-guides/${guide.slug}`,
     guide.updatedDate || guide.publishDate || TODAY,
@@ -130,13 +126,13 @@ const guideUrls = indexableGuides.map((guide) =>
   )
 );
 
-const guidesXml = wrapUrlSet(guideUrls);
+const guidesXml = wrapUrlSet(guideItems);
 writeSitemapFile('sitemap-blogs.xml', guidesXml);
 writeSitemapFile('sitemap-guides.xml', guidesXml);
-console.log(`[Blogs/Guides Sitemap] Generated with ${guideUrls.length} indexable articles (excluded ${guidesDatabase.length - guideUrls.length} draft/review articles).`);
+console.log(`[Blogs/Guides Sitemap] Generated with ${guideItems.length} indexable articles (excluded ${guidesDatabase.length - guideItems.length} draft/review articles).`);
 
 // 6. Master Sitemap Index
-const totalSitemapUrls = pages.length + tourSlugs.length + destSlugs.length + locationItems.length + guideUrls.length;
+const totalSitemapUrls = pages.length + tourSlugs.length + destSlugs.length + locationItems.length + guideItems.length;
 
 const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -160,10 +156,23 @@ const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
     <loc>${BASE_URL}/sitemaps/sitemap-blogs.xml</loc>
     <lastmod>${TODAY}</lastmod>
   </sitemap>
+  <sitemap>
+    <loc>${BASE_URL}/sitemaps/sitemap-guides.xml</loc>
+    <lastmod>${TODAY}</lastmod>
+  </sitemap>
 </sitemapindex>`;
 
 fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), sitemapIndex, 'utf8');
 fs.writeFileSync(path.join(sitemapsDir, 'sitemap.xml'), sitemapIndex, 'utf8');
+
+// Also write sitemap_index.xml (standard convention used by Yoast/RankMath/crawlers)
+fs.writeFileSync(path.join(publicDir, 'sitemap_index.xml'), sitemapIndex, 'utf8');
+fs.writeFileSync(path.join(sitemapsDir, 'sitemap_index.xml'), sitemapIndex, 'utf8');
+
+// 7. Combined Single Sitemap (all URLs in one file for direct submission fallback)
+const allItems = [...pageItems, ...tourItems, ...destItems, ...locationItems, ...guideItems];
+const allXml = wrapUrlSet(allItems);
+writeSitemapFile('sitemap-all.xml', allXml);
 
 console.log(`\n======================================================`);
 console.log(`Master XML Sitemap Index generated successfully!`);
@@ -172,5 +181,6 @@ console.log(`Pages: ${pages.length}`);
 console.log(`Tours: ${tourSlugs.length}`);
 console.log(`Destinations: ${destSlugs.length}`);
 console.log(`Locations (States + Indexable Hubs): ${locationItems.length}`);
-console.log(`Blogs / Travel Guides: ${guideUrls.length}`);
+console.log(`Blogs / Travel Guides: ${guideItems.length}`);
+console.log(`Files generated: sitemap.xml, sitemap_index.xml, sitemap-all.xml, modular sitemaps`);
 console.log(`======================================================\n`);

@@ -14,14 +14,14 @@ const regions = [
   { slug: 'alleppey', name: 'Alleppey', parentDest: 'Kerala', pkg: 'kerala', author: 'arun-menon', img: '/images/tours/kerala-munnar.webp' },
   { slug: 'wayanad', name: 'Wayanad', parentDest: 'Kerala', pkg: 'kerala', author: 'arun-menon', img: '/images/tours/kerala-munnar.webp' },
   { slug: 'varkala', name: 'Varkala & Kovalam', parentDest: 'Kerala', pkg: 'kerala', author: 'arun-menon', img: '/images/tours/kerala-munnar.webp' },
-  { slug: 'hanoi', name: 'Hanoi', parentDest: 'Vietnam', pkg: 'vietnam', author: 'priya-sharma', img: '/images/tours/vietnam.webp' },
-  { slug: 'halong-bay', name: 'Halong Bay', parentDest: 'Vietnam', pkg: 'vietnam', author: 'priya-sharma', img: '/images/tours/vietnam.webp' },
-  { slug: 'da-nang', name: 'Da Nang', parentDest: 'Vietnam', pkg: 'vietnam', author: 'priya-sharma', img: '/images/tours/vietnam.webp' },
-  { slug: 'hoi-an', name: 'Hoi An', parentDest: 'Vietnam', pkg: 'vietnam', author: 'priya-sharma', img: '/images/tours/vietnam.webp' },
-  { slug: 'ba-na-hills', name: 'Ba Na Hills', parentDest: 'Vietnam', pkg: 'vietnam', author: 'priya-sharma', img: '/images/tours/vietnam.webp' },
+  { slug: 'hanoi', name: 'Hanoi', parentDest: 'Vietnam', pkg: 'vietnam', author: 'priya-sharma', img: '/images/tours/vietnam-phu-quoc-danang.webp' },
+  { slug: 'halong-bay', name: 'Halong Bay', parentDest: 'Vietnam', pkg: 'vietnam', author: 'priya-sharma', img: '/images/tours/vietnam-phu-quoc-danang.webp' },
+  { slug: 'da-nang', name: 'Da Nang', parentDest: 'Vietnam', pkg: 'vietnam', author: 'priya-sharma', img: '/images/tours/vietnam-phu-quoc-danang.webp' },
+  { slug: 'hoi-an', name: 'Hoi An', parentDest: 'Vietnam', pkg: 'vietnam', author: 'priya-sharma', img: '/images/tours/vietnam-phu-quoc-danang.webp' },
+  { slug: 'ba-na-hills', name: 'Ba Na Hills', parentDest: 'Vietnam', pkg: 'vietnam', author: 'priya-sharma', img: '/images/tours/vietnam-phu-quoc-danang.webp' },
   { slug: 'marina-bay', name: 'Marina Bay Singapore', parentDest: 'Singapore', pkg: 'singapore', author: 'priya-sharma', img: '/images/tours/singapore.webp' },
   { slug: 'sentosa', name: 'Sentosa Island', parentDest: 'Singapore', pkg: 'singapore', author: 'priya-sharma', img: '/images/tours/singapore.webp' },
-  { slug: 'singapore-cruise', name: 'Singapore Genting Dream Cruise', parentDest: 'Singapore', pkg: 'singapore-cruise', author: 'priya-sharma', img: '/images/tours/singapore-cruise.webp' },
+  { slug: 'singapore-cruise', name: 'Singapore Genting Dream Cruise', parentDest: 'Singapore', pkg: 'singapore-cruise', author: 'priya-sharma', img: '/images/tours/singapore-genting-dream-cruise.webp' },
   { slug: 'kuala-lumpur', name: 'Kuala Lumpur', parentDest: 'Malaysia', pkg: 'malaysia-kuala-lumpur-langkawi', author: 'priya-sharma', img: '/images/Amazing Malaysia (Kuala Lumpur + Langkawi) tour Package 6N 7Days/City_Tour_in_Kuala_Lumpur.jpg' },
   { slug: 'langkawi', name: 'Langkawi Island', parentDest: 'Malaysia', pkg: 'malaysia-kuala-lumpur-langkawi', author: 'priya-sharma', img: '/images/Amazing Malaysia (Kuala Lumpur + Langkawi) tour Package 6N 7Days/Langkawi_Oriental_Village.jpg' },
   { slug: 'genting-highlands', name: 'Genting Highlands', parentDest: 'Malaysia', pkg: 'malaysia-kuala-lumpur-langkawi', author: 'priya-sharma', img: '/images/tours/malaysia-kuala-lumpur-langkawi.webp' },
@@ -255,10 +255,7 @@ for (const catArchetype of categoryArchetypes) {
   }
 }
 
-// 1. Output database JSON in /SEO/
-fs.writeFileSync(path.join(seoDir, 'blog-content-database.json'), JSON.stringify(allArticles, null, 2), 'utf8');
-
-// 2. Output client JSON database in client/src/data/
+// 1. Output client JSON database in client/src/data/
 const clientBlogJsonPath = path.join(__dirname, '..', 'client', 'src', 'data', 'travelGuidesDatabase.json');
 fs.writeFileSync(clientBlogJsonPath, JSON.stringify(allArticles, null, 2), 'utf8');
 
