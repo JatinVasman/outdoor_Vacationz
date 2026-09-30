@@ -6,10 +6,10 @@ export async function createEnquiry(req: Request, res: Response): Promise<void> 
   try {
     const payload = req.body as EnquiryPayload;
 
-    if (!payload || !payload.name?.trim() || !payload.email?.trim()) {
+    if (!payload || !payload.name?.trim() || !payload.email?.trim() || !payload.phone?.trim()) {
       const response: ApiResponse = {
         success: false,
-        error: 'Name and email are required.',
+        error: 'Name, email, and phone number are required.',
       };
       res.status(400).json(response);
       return;
@@ -25,15 +25,23 @@ export async function createEnquiry(req: Request, res: Response): Promise<void> 
       return;
     }
 
+    const sanitizedPayload: EnquiryPayload = {
+      ...payload,
+      destination: payload.destination?.trim() || 'Flexible / To be decided',
+      travelDates: payload.travelDates?.trim() || 'Flexible',
+      travellers: payload.travellers?.trim() || 'Flexible / 2 Adults',
+    };
+
     console.log('[Enquiry Received]', {
-      name: payload.name,
-      email: payload.email,
-      destination: payload.destination,
-      source: payload.source || 'unspecified',
+      name: sanitizedPayload.name,
+      email: sanitizedPayload.email,
+      phone: sanitizedPayload.phone,
+      destination: sanitizedPayload.destination,
+      source: sanitizedPayload.source || 'unspecified',
       timestamp: new Date().toISOString(),
     });
 
-    const result = await sendEnquiryEmail(payload);
+    const result = await sendEnquiryEmail(sanitizedPayload);
 
     if (!result.success) {
       console.error('[Enquiry Dispatch Failed]', result.error);

@@ -1,4 +1,9 @@
+import path from 'path';
 import dotenv from 'dotenv';
+
+// Load environment variables from server/.env, parent root .env, or cwd
+dotenv.config({ path: path.resolve(process.cwd(), 'server/.env') });
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
 dotenv.config();
 
 import express from 'express';

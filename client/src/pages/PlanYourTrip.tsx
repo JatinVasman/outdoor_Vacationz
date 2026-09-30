@@ -39,7 +39,7 @@ export function PlanYourTrip() {
     const e: Record<string, string> = {};
     if (!form.name.trim()) e.name = 'Required';
     if (!form.email.trim() || !/\S+@\S+\.\S+/.test(form.email)) e.email = 'Valid email required';
-    if (!form.destination) e.destination = 'Required';
+    if (!form.phone.trim()) e.phone = 'Phone number is required';
     return e;
   };
 
@@ -139,11 +139,19 @@ export function PlanYourTrip() {
                   </div>
                   <div className="plan-form-row">
                     <div className="plan-field">
-                      <label>Phone</label>
-                      <input name="phone" value={form.phone} onChange={handleChange} placeholder="+91 98765 43210" />
+                      <label>Phone Number *</label>
+                      <input
+                        name="phone"
+                        type="tel"
+                        value={form.phone}
+                        onChange={handleChange}
+                        placeholder="+91 98765 43210"
+                        className={errors.phone ? 'error' : ''}
+                      />
+                      {errors.phone && <span className="plan-field-error">{errors.phone}</span>}
                     </div>
                     <div className="plan-field">
-                      <label>Number of Travellers</label>
+                      <label>Number of Travellers (Flexible)</label>
                       <select name="travellers" value={form.travellers} onChange={handleChange}>
                         {['Solo', '2 People', '3–4 People', '5–8 People', '8+ People'].map((o) => <option key={o}>{o}</option>)}
                       </select>
@@ -158,16 +166,21 @@ export function PlanYourTrip() {
                   </h3>
                   <div className="plan-form-row">
                     <div className="plan-field">
-                      <label>Destination *</label>
-                      <select name="destination" value={form.destination} onChange={handleChange} className={errors.destination ? 'error' : ''}>
-                        <option value="">Choose destination…</option>
+                      <label>Destination (Flexible)</label>
+                      <select name="destination" value={form.destination} onChange={handleChange}>
+                        <option value="">Flexible / Choose destination…</option>
                         {destinations.map((d) => <option key={d}>{d}</option>)}
                       </select>
-                      {errors.destination && <span className="plan-field-error">{errors.destination}</span>}
                     </div>
                     <div className="plan-field">
-                      <label>Travel Dates</label>
-                      <input name="travelDates" value={form.travelDates} onChange={handleChange} placeholder="e.g. Dec 10–18, 2025" />
+                      <label>Travel Date (Flexible)</label>
+                      <input
+                        name="travelDates"
+                        type="date"
+                        min={new Date().toISOString().split('T')[0]}
+                        value={form.travelDates}
+                        onChange={handleChange}
+                      />
                     </div>
                   </div>
                 </div>

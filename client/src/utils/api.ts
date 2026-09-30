@@ -23,11 +23,15 @@ export async function submitEnquiry(payload: EnquiryPayload): Promise<SubmitEnqu
     const data = await response.json().catch(() => null);
 
     if (!response.ok) {
+      const errorMsg =
+        data?.error ||
+        (response.status === 500
+          ? 'The enquiry server encountered an error. Please ensure the backend server is running and RESEND_API_KEY is set in server/.env, or email us at contact.outdoorvacationz@gmail.com'
+          : `Submission failed (${response.status}). Please contact us directly at contact.outdoorvacationz@gmail.com`);
+
       return {
         success: false,
-        error:
-          data?.error ||
-          `Submission failed (${response.status}). Please email us directly at contact.outdoorvacationz@gmail.com`,
+        error: errorMsg,
       };
     }
 
@@ -38,11 +42,10 @@ export async function submitEnquiry(payload: EnquiryPayload): Promise<SubmitEnqu
     };
   } catch (err: unknown) {
     console.error('[Enquiry API Error]', err);
-    // If backend server is unreachable (e.g. only frontend is running)
     return {
       success: false,
       error:
-        'Unable to connect to the enquiry service. Please email your trip details directly to contact.outdoorvacationz@gmail.com or call +91 76699 31399.',
+        'Cannot connect to the enquiry service (Server unreachable). Please restart your development server with `npm run dev` or email us directly at contact.outdoorvacationz@gmail.com.',
     };
   }
 }

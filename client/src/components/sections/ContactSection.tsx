@@ -182,26 +182,27 @@ export function ContactSection() {
               <div className="form-row">
                 <div className="form-field">
                   <label htmlFor="phone">
-                    <Phone size={13} /> Phone
+                    <Phone size={13} /> Phone Number *
                   </label>
                   <input
                     id="phone"
                     name="phone"
                     type="tel"
-                    placeholder="+91 XXXXX XXXXX"
+                    required
+                    placeholder="+91 98765 43210"
                     value={form.phone}
                     onChange={handleChange}
                   />
                 </div>
                 <div className="form-field">
                   <label htmlFor="destination">
-                    <MapPin size={13} /> Destination
+                    <MapPin size={13} /> Destination (Flexible)
                   </label>
                   <input
                     id="destination"
                     name="destination"
                     type="text"
-                    placeholder="Where do you want to go?"
+                    placeholder="Where do you want to go? (or flexible)"
                     list="contact-dest-list"
                     value={form.destination}
                     onChange={handleChange}
@@ -215,20 +216,20 @@ export function ContactSection() {
               <div className="form-row">
                 <div className="form-field">
                   <label htmlFor="travelDates">
-                    <Calendar size={13} /> Travel Dates
+                    <Calendar size={13} /> Travel Date (Flexible)
                   </label>
                   <input
                     id="travelDates"
                     name="travelDates"
-                    type="text"
-                    placeholder="e.g. Dec 15 – Dec 22, 2025"
+                    type="date"
+                    min={new Date().toISOString().split('T')[0]}
                     value={form.travelDates}
                     onChange={handleChange}
                   />
                 </div>
                 <div className="form-field">
                   <label htmlFor="travellers">
-                    <Users size={13} /> Number of Travellers
+                    <Users size={13} /> Number of Travellers (Flexible)
                   </label>
                   <select
                     id="travellers"
@@ -236,7 +237,7 @@ export function ContactSection() {
                     value={form.travellers}
                     onChange={handleChange}
                   >
-                    <option value="">Select</option>
+                    <option value="">Flexible / Select</option>
                     <option value="1">Solo traveller</option>
                     <option value="2">2 adults</option>
                     <option value="3-4">3–4 people</option>

@@ -28,6 +28,7 @@ export function Contact() {
     const e: Record<string, string> = {};
     if (!form.name.trim()) e.name = 'Name is required';
     if (!form.email.trim() || !/\S+@\S+\.\S+/.test(form.email)) e.email = 'Valid email is required';
+    if (!form.phone.trim()) e.phone = 'Phone number is required';
     return e;
   };
 
@@ -144,23 +145,37 @@ export function Contact() {
                     </div>
                     <div className="contact-form-row">
                       <div className="contact-form-field">
-                        <label>Phone</label>
-                        <input name="phone" value={form.phone} onChange={handleChange} placeholder="+91 98765 43210" />
+                        <label>Phone Number *</label>
+                        <input
+                          name="phone"
+                          type="tel"
+                          value={form.phone}
+                          onChange={handleChange}
+                          placeholder="+91 98765 43210"
+                          className={errors.phone ? 'error' : ''}
+                        />
+                        {errors.phone && <span className="contact-field-error">{errors.phone}</span>}
                       </div>
                       <div className="contact-form-field">
-                        <label>Destination</label>
-                        <input name="destination" value={form.destination} onChange={handleChange} placeholder="Kerala, Singapore, Vietnam…" />
+                        <label>Destination (Flexible)</label>
+                        <input name="destination" value={form.destination} onChange={handleChange} placeholder="e.g. Kerala, Vietnam, Singapore (or flexible)" />
                       </div>
                     </div>
                     <div className="contact-form-row">
                       <div className="contact-form-field">
-                        <label>Travel Dates</label>
-                        <input name="travelDates" value={form.travelDates} onChange={handleChange} placeholder="e.g. Dec 2025" />
+                        <label>Travel Date (Flexible)</label>
+                        <input
+                          name="travelDates"
+                          type="date"
+                          min={new Date().toISOString().split('T')[0]}
+                          value={form.travelDates}
+                          onChange={handleChange}
+                        />
                       </div>
                       <div className="contact-form-field">
-                        <label>Travellers</label>
+                        <label>Travellers (Flexible)</label>
                         <select name="travellers" value={form.travellers} onChange={handleChange}>
-                          <option value="">Select…</option>
+                          <option value="">Flexible / Choose travellers…</option>
                           {['Solo', '2 People', '3–4 People', '5–8 People', '8+ People'].map((o) => (
                             <option key={o}>{o}</option>
                           ))}
