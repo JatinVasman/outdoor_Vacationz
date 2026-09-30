@@ -4,22 +4,6 @@
   "outputDirectory": "client/dist",
   "rewrites": [
     {
-      "source": "/api/enquiries",
-      "destination": "/api/enquiries.js"
-    },
-    {
-      "source": "/api/health",
-      "destination": "/api/health.js"
-    },
-    {
-      "source": "/enquiries",
-      "destination": "/api/enquiries.js"
-    },
-    {
-      "source": "/health",
-      "destination": "/api/health.js"
-    },
-    {
       "source": "/api/(.*)",
       "destination": "/api/$1"
     },
