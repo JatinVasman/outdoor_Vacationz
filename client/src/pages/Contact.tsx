@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Clock, Instagram, Facebook, CheckCircle2 } from 'lucide-react';
 import { PageHero } from '../components/layout/PageHero';
+import { submitEnquiry } from '../utils/api';
 import './ContactPage.css';
 
 const contactDetails = [
   { icon: <Phone size={20} />, label: 'Phone', value: '+91 76699 31399', href: 'tel:+917669931399' },
-  { icon: <Mail size={20} />, label: 'Email', value: 'Outdoorvacationz@gmail.com', href: 'mailto:Outdoorvacationz@gmail.com' },
+  { icon: <Mail size={20} />, label: 'Email', value: 'contact.outdoorvacationz@gmail.com', href: 'mailto:contact.outdoorvacationz@gmail.com' },
   { icon: <MapPin size={20} />, label: 'Location', value: 'India', href: undefined },
   { icon: <Clock size={20} />, label: 'Hours', value: 'Mon–Sat, 9am–7pm IST', href: undefined },
   { icon: <Instagram size={20} />, label: 'Instagram', value: '@outdoor_vacationz', href: 'https://www.instagram.com/outdoor_vacationz/' },
@@ -21,6 +22,7 @@ export function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [serverError, setServerError] = useState<string | null>(null);
 
   const validate = () => {
     const e: Record<string, string> = {};
@@ -33,6 +35,7 @@ export function Contact() {
     const { name, value } = e.target;
     setForm((f) => ({ ...f, [name]: value }));
     if (errors[name]) setErrors((er) => ({ ...er, [name]: '' }));
+    if (serverError) setServerError(null);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -40,9 +43,22 @@ export function Contact() {
     const errs = validate();
     if (Object.keys(errs).length) { setErrors(errs); return; }
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1200));
+    setServerError(null);
+
+    const result = await submitEnquiry({
+      ...form,
+      source: 'Contact Page (/contact)',
+    });
+
     setLoading(false);
-    setSubmitted(true);
+    if (result.success) {
+      setSubmitted(true);
+    } else {
+      setServerError(
+        result.error ||
+          'Failed to send enquiry. Please contact us directly at contact.outdoorvacationz@gmail.com'
+      );
+    }
   };
 
   return (
@@ -161,6 +177,11 @@ export function Contact() {
                         placeholder="Tell us about your ideal trip…"
                       />
                     </div>
+                    {serverError && (
+                      <div style={{ padding: '12px 14px', borderRadius: '8px', background: '#fef2f2', border: '1px solid #fecaca', color: '#b91c1c', fontSize: '13px', lineHeight: '1.5', marginTop: '12px' }}>
+                        {serverError}
+                      </div>
+                    )}
                     <button type="submit" className="contact-submit-btn" disabled={loading}>
                       {loading ? 'Sending…' : 'Send Enquiry'}
                     </button>

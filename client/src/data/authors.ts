@@ -10,7 +10,7 @@ export const authors: AuthorProfile[] = [
     expertise: ['Itinerary Verification', 'Flight Logistics', 'Private Sightseeing Transfers', 'Seasonal Timing'],
     yearsExperience: 10,
     destinationsCovered: ['Kerala', 'Vietnam', 'Singapore', 'Malaysia', 'North East'],
-    contactEmail: 'Outdoorvacationz@gmail.com',
+    contactEmail: 'contact.outdoorvacationz@gmail.com',
   },
 ];
 

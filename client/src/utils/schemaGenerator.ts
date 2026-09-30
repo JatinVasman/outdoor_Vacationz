@@ -12,7 +12,7 @@ export function generateOrganizationSchema() {
     url: BASE_URL,
     logo: `${BASE_URL}/favicon.svg`,
     description: 'Outdoor Vacationz crafts curated international and domestic travel packages with handpicked accommodations, private sightseeing transfers, and personalized itineraries.',
-    email: 'info@outdoorvacationz.com',
+    email: 'contact.outdoorvacationz@gmail.com',
     telephone: '+91-98765-43210',
     address: {
       '@type': 'PostalAddress',

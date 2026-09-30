@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { Send, CheckCircle, User, Mail, Phone, MapPin, Calendar, Users, MessageSquare } from 'lucide-react';
 import type { EnquiryPayload } from '../../types';
+import { submitEnquiry } from '../../utils/api';
 import './ContactSection.css';
 
 const initialForm: EnquiryPayload = {
@@ -28,26 +29,34 @@ export function ContactSection() {
   const [form, setForm] = useState<EnquiryPayload>(initialForm);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [serverError, setServerError] = useState<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    if (serverError) setServerError(null);
   };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setServerError(null);
 
-    // Frontend demo — structure ready for POST /api/enquiries
-    try {
-      // In production, replace with:
-      // await fetch('/api/enquiries', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(form) });
-      await new Promise((res) => setTimeout(res, 1200));
+    const result = await submitEnquiry({
+      ...form,
+      source: 'Home Page Contact Section',
+    });
+
+    setLoading(false);
+    if (result.success) {
       setSubmitted(true);
       setForm(initialForm);
-    } finally {
-      setLoading(false);
+    } else {
+      setServerError(
+        result.error ||
+          'Failed to send enquiry. Please contact us directly at contact.outdoorvacationz@gmail.com'
+      );
     }
   };
 
@@ -92,11 +101,11 @@ export function ContactSection() {
                   <span>+91 76699 31399</span>
                 </div>
               </a>
-              <a href="mailto:Outdoorvacationz@gmail.com" className="contact-detail-item">
+              <a href="mailto:contact.outdoorvacationz@gmail.com" className="contact-detail-item">
                 <span className="contact-detail-icon"><Mail size={16} /></span>
                 <div>
                   <b>Email us</b>
-                  <span>Outdoorvacationz@gmail.com</span>
+                  <span>contact.outdoorvacationz@gmail.com</span>
                 </div>
               </a>
               <a
@@ -250,6 +259,12 @@ export function ContactSection() {
                   onChange={handleChange}
                 />
               </div>
+
+              {serverError && (
+                <div style={{ padding: '12px 14px', borderRadius: '8px', background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.25)', color: '#f87171', fontSize: '13px', lineHeight: '1.5' }}>
+                  {serverError}
+                </div>
+              )}
 
               <button type="submit" className="contact-submit" disabled={loading}>
                 {loading ? (

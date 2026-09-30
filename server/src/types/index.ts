@@ -5,7 +5,13 @@ export interface EnquiryPayload {
   destination?: string;
   travelDates?: string;
   travellers?: string;
+  budget?: string;
+  travelStyle?: string;
+  accommodation?: string;
+  activities?: string[];
+  additionalRequirements?: string;
   message?: string;
+  source?: string;
 }
 
 export interface ApiResponse<T = unknown> {

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, MapPin, Calendar, Users, Wallet, Palmtree, Home, CheckCircle2 } from 'lucide-react';
 import { PageHero } from '../components/layout/PageHero';
+import { submitEnquiry } from '../utils/api';
 import './PlanYourTrip.css';
 
 const destinations = [
@@ -32,6 +33,7 @@ export function PlanYourTrip() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [serverError, setServerError] = useState<string | null>(null);
 
   const validate = () => {
     const e: Record<string, string> = {};
@@ -45,6 +47,7 @@ export function PlanYourTrip() {
     const { name, value } = e.target;
     setForm((f) => ({ ...f, [name]: value }));
     if (errors[name]) setErrors((er) => ({ ...er, [name]: '' }));
+    if (serverError) setServerError(null);
   };
 
   const toggleActivity = (act: string) => {
@@ -61,9 +64,22 @@ export function PlanYourTrip() {
     const errs = validate();
     if (Object.keys(errs).length) { setErrors(errs); return; }
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 1400));
+    setServerError(null);
+
+    const result = await submitEnquiry({
+      ...form,
+      source: 'Plan Your Trip Page (/plan-your-trip)',
+    });
+
     setLoading(false);
-    setSubmitted(true);
+    if (result.success) {
+      setSubmitted(true);
+    } else {
+      setServerError(
+        result.error ||
+          'Failed to send trip request. Please contact us directly at contact.outdoorvacationz@gmail.com'
+      );
+    }
   };
 
   if (submitted) {
@@ -244,6 +260,12 @@ export function PlanYourTrip() {
                   />
                 </div>
 
+                {serverError && (
+                  <div style={{ padding: '12px 14px', borderRadius: '8px', background: '#fef2f2', border: '1px solid #fecaca', color: '#b91c1c', fontSize: '13px', lineHeight: '1.5', marginBottom: '16px' }}>
+                    {serverError}
+                  </div>
+                )}
+
                 <button type="submit" className="plan-submit-btn" disabled={loading}>
                   {loading ? 'Creating your plan…' : 'Create My Trip'}
                   {!loading && <ArrowRight size={16} />}
@@ -292,8 +314,8 @@ export function PlanYourTrip() {
                 <a href="tel:+917669931399" className="plan-sidebar-phone">
                   +91 76699 31399
                 </a>
-                <a href="mailto:Outdoorvacationz@gmail.com" className="plan-sidebar-email">
-                  Outdoorvacationz@gmail.com
+                <a href="mailto:contact.outdoorvacationz@gmail.com" className="plan-sidebar-email">
+                  contact.outdoorvacationz@gmail.com
                 </a>
               </div>
             </aside>

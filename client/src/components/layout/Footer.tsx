@@ -81,8 +81,8 @@ export function Footer() {
             <div style={{ marginTop: '20px', fontSize: '13px', color: 'var(--soft)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '6px' }}>
                 <Mail size={14} color="var(--primary)" />
-                <a href="mailto:Outdoorvacationz@gmail.com" style={{ color: 'inherit', textDecoration: 'none' }}>
-                  Outdoorvacationz@gmail.com
+                <a href="mailto:contact.outdoorvacationz@gmail.com" style={{ color: 'inherit', textDecoration: 'none' }}>
+                  contact.outdoorvacationz@gmail.com
                 </a>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '6px' }}>
