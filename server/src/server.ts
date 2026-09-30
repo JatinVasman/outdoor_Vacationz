@@ -47,15 +47,21 @@ app.get('/api/health', (_req, res) => {
   });
 });
 
-// Start
-app.listen(PORT, () => {
-  console.log(`🌍 Outdoor Vacationz API running on http://localhost:${PORT}`);
-  console.log(`✉️  Resend Mail System active (Target: ${process.env.RESEND_TO_EMAIL || 'contact.outdoorvacationz@gmail.com'})`);
-  if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY.includes('placeholder')) {
-    console.log(`⚠️  RESEND_API_KEY not configured. Enquiries will be simulated and logged in console.`);
-  } else {
-    console.log(`🔑 Resend API Key detected.`);
-  }
-});
+// Start local server when not in Vercel serverless environment
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`🌍 Outdoor Vacationz API running on http://localhost:${PORT}`);
+    console.log(`✉️  Resend Mail System active (Target: ${process.env.RESEND_TO_EMAIL || 'contact.outdoorvacationz@gmail.com'})`);
+    if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY.includes('placeholder')) {
+      console.log(`⚠️  RESEND_API_KEY not configured. Enquiries will be simulated and logged in console.`);
+    } else {
+      console.log(`🔑 Resend API Key detected.`);
+    }
+  });
+}
 
+// Export app instance for Vercel Services Express runtime
+// @ts-ignore
+module.exports = app;
 export default app;
+

@@ -77,4 +77,4 @@ npm run build:all
 
 - `client/` — React frontend (Vite, TypeScript, Vanilla CSS)
 - `server/` — Express backend API with Resend integration (`src/services/emailService.ts`)
-- `api/` — Vercel serverless function (`api/enquiries.ts`) for zero-config Vercel deployments
+- `vercel.json` — Vercel multi-service configuration routing `/(.*)` to `client` and `/api/(.*)` to `server`
