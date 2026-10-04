@@ -13,11 +13,13 @@ export function generateOrganizationSchema() {
     logo: `${BASE_URL}/favicon.svg`,
     description: 'Outdoor Vacationz crafts curated international and domestic travel packages with handpicked accommodations, private sightseeing transfers, and personalized itineraries.',
     email: 'contact.outdoorvacationz@gmail.com',
-    telephone: '+91-98765-43210',
+    telephone: '+91-76699-31399',
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'Noida',
+      streetAddress: 'Office -410 4th Floor, Cloud 9, near Mahagun mall, Sector 3F, Sector-1, Vaishali',
+      addressLocality: 'Ghaziabad',
       addressRegion: 'Uttar Pradesh',
+      postalCode: '201010',
       addressCountry: 'IN',
     },
     areaServed: [

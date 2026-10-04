@@ -7,7 +7,12 @@ import './ContactPage.css';
 const contactDetails = [
   { icon: <Phone size={20} />, label: 'Phone', value: '+91 76699 31399', href: 'tel:+917669931399' },
   { icon: <Mail size={20} />, label: 'Email', value: 'contact.outdoorvacationz@gmail.com', href: 'mailto:contact.outdoorvacationz@gmail.com' },
-  { icon: <MapPin size={20} />, label: 'Location', value: 'India', href: undefined },
+  {
+    icon: <MapPin size={20} />,
+    label: 'Office Location',
+    value: 'Office -410 4th Floor, Cloud 9, near Mahagun mall, Sector 3F, Sector-1, Vaishali, Ghaziabad, Uttar Pradesh 201010',
+    href: 'https://share.google/tGPCpXw6TmYw4OV5K',
+  },
   { icon: <Clock size={20} />, label: 'Hours', value: 'Mon–Sat, 9am–7pm IST', href: undefined },
   { icon: <Instagram size={20} />, label: 'Instagram', value: '@outdoor_vacationz', href: 'https://www.instagram.com/outdoor_vacationz/' },
   { icon: <Facebook size={20} />, label: 'Facebook', value: 'Outdoorvacationz766', href: 'https://www.facebook.com/Outdoorvacationz766/' },

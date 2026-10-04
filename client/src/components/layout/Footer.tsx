@@ -88,21 +88,30 @@ export function Footer() {
             </div>
 
             <div style={{ marginTop: '20px', fontSize: '13px', color: 'var(--soft)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '6px' }}>
-                <Mail size={14} color="var(--primary)" />
-                <a href="mailto:contact.outdoorvacationz@gmail.com" style={{ color: 'inherit', textDecoration: 'none' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
+                <Mail size={14} color="var(--primary)" style={{ flexShrink: 0 }} />
+                <a href="mailto:contact.outdoorvacationz@gmail.com" className="footer-contact-link">
                   contact.outdoorvacationz@gmail.com
                 </a>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '6px' }}>
-                <Phone size={14} color="var(--primary)" />
-                <a href="tel:+917669931399" style={{ color: 'inherit', textDecoration: 'none' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
+                <Phone size={14} color="var(--primary)" style={{ flexShrink: 0 }} />
+                <a href="tel:+917669931399" className="footer-contact-link">
                   +91 76699 31399
                 </a>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <MapPin size={14} color="var(--primary)" />
-                <span>Sector 62, Noida, NCR, India</span>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '6px' }}>
+                <MapPin size={14} color="var(--primary)" style={{ flexShrink: 0, marginTop: '3px' }} />
+                <a
+                  href="https://share.google/tGPCpXw6TmYw4OV5K"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-contact-link"
+                  style={{ lineHeight: 1.45 }}
+                  title="View on Google Maps"
+                >
+                  Office -410 4th Floor, Cloud 9, near Mahagun mall, Sector 3F, Sector-1, Vaishali, Ghaziabad, Uttar Pradesh 201010
+                </a>
               </div>
             </div>
           </div>
