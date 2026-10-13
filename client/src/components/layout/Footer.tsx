@@ -160,7 +160,6 @@ export function Footer() {
               <li><Link to="/packages" className="footer-link">All Tour Packages</Link></li>
               <li><Link to="/contact" className="footer-link">Contact Support</Link></li>
               <li><Link to="/plan-your-trip" className="footer-link">Plan My Trip</Link></li>
-              <li><Link to="/seo-dashboard" className="footer-link" style={{ color: 'var(--primary)', fontWeight: 600 }}>SEO Health Console</Link></li>
             </ul>
 
             <Link to="/plan-your-trip" className="footer-enquiry-btn">
@@ -172,9 +171,7 @@ export function Footer() {
         <div className="footer-bottom">
           <span>© {currentYear} Outdoor Vacationz. All rights reserved. Registered travel management company.</span>
           <div className="footer-bottom-links">
-            <Link to="/about" className="footer-bottom-link">About E-E-A-T</Link>
             <Link to="/contact" className="footer-bottom-link">Privacy & Terms</Link>
-            <a href="/sitemap.xml" className="footer-bottom-link" target="_blank" rel="noreferrer">Sitemap</a>
           </div>
         </div>
       </div>
