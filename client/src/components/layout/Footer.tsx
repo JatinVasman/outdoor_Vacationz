@@ -169,7 +169,17 @@ export function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <span>© {currentYear} Outdoor Vacationz. All rights reserved. Registered travel management company.</span>
+          <div className="footer-agency-credit">
+            <a
+              href="https://businessvolunteers.online/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-agency-link"
+            >
+              Business Volunteer
+            </a>
+            {' '}&nbsp;&nbsp;|&nbsp;&nbsp; All Rights Reserved {currentYear} &nbsp; Digital Marketing Agency/Company in Noida, Delhi NCR, India
+          </div>
           <div className="footer-bottom-links">
             <Link to="/contact" className="footer-bottom-link">Privacy & Terms</Link>
           </div>

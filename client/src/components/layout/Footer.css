@@ -188,6 +188,24 @@
   flex-wrap: wrap;
 }
 
+.footer-agency-credit {
+  font-size: 13px;
+  color: #8a9e99;
+  line-height: 1.5;
+}
+
+.footer-agency-link {
+  color: #b0c4be;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.footer-agency-link:hover {
+  color: var(--teal);
+}
+
 .footer-bottom-links {
   display: flex;
   gap: 24px;
@@ -235,5 +253,6 @@
   .footer-bottom {
     flex-direction: column;
     text-align: center;
+    gap: 16px;
   }
 }
