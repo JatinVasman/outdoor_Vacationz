@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Plane, Instagram, Facebook, Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
+import { Instagram, Facebook, Mail, Phone, MapPin } from 'lucide-react';
 import './Footer.css';
 
 const destinationHubLinks = [
@@ -61,13 +61,12 @@ export function Footer() {
         <div className="footer-grid" style={{ gridTemplateColumns: '1.4fr 1fr 1fr 1fr 1fr' }}>
           {/* Brand */}
           <div className="footer-brand">
-            <Link to="/" className="footer-logo">
-              <span className="footer-logo-icon">
-                <Plane size={18} strokeWidth={2.5} />
-              </span>
-              <span>
-                Outdoor<span className="footer-logo-accent">Vacationz</span>
-              </span>
+            <Link to="/" className="footer-logo" title="Outdoor Vacationz - Home">
+              <img
+                src="/images/logo.png"
+                alt="Outdoor Vacationz"
+                className="footer-logo-img"
+              />
             </Link>
             <p className="footer-desc">
               Curated international and domestic travel packages with handpicked accommodations, private sightseeing transfers, and personalized itineraries.
@@ -103,14 +102,14 @@ export function Footer() {
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '6px' }}>
                 <MapPin size={14} color="var(--primary)" style={{ flexShrink: 0, marginTop: '3px' }} />
                 <a
-                  href="https://share.google/tGPCpXw6TmYw4OV5K"
+                  href="https://share.google/sjp5LTeJgfBvI0aiq"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="footer-contact-link"
                   style={{ lineHeight: 1.45 }}
                   title="View on Google Maps"
                 >
-                  Office -410 4th Floor, Cloud 9, near Mahagun mall, Sector 3F, Sector-1, Vaishali, Ghaziabad, Uttar Pradesh 201010
+                  Office -349 3rd Floor, Cloud-9, near Mahagun Mall, Sector 3F, Sector-1, Vaishali, Ghaziabad, Uttar Pradesh 201010
                 </a>
               </div>
             </div>
@@ -170,15 +169,15 @@ export function Footer() {
 
         <div className="footer-bottom">
           <div className="footer-agency-credit">
+            © {currentYear} Outdoor Vacationz. All rights reserved. &nbsp;|&nbsp; Managed and made by{' '}
             <a
               href="https://businessvolunteers.online/"
               target="_blank"
               rel="noopener noreferrer"
               className="footer-agency-link"
             >
-              Business Volunteer
+              Business Volunteers
             </a>
-            {' '}&nbsp;&nbsp;|&nbsp;&nbsp; All Rights Reserved {currentYear} &nbsp; Digital Marketing Agency/Company in Noida, Delhi NCR, India
           </div>
           <div className="footer-bottom-links">
             <Link to="/contact" className="footer-bottom-link">Privacy & Terms</Link>

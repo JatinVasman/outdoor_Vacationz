@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import { Menu, X, Plane, ArrowRight } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 import './Navbar.css';
 
 // nav links — Destinations and Departure Cities intentionally excluded (footer only)
@@ -45,9 +45,11 @@ export function Navbar() {
       <nav className="navbar-pill">
         {/* Logo */}
         <Link to="/" className="navbar-logo" onClick={handleLogoClick} title="Outdoor Vacationz - Home">
-          <span className="navbar-logo-icon">
-            <Plane size={18} strokeWidth={2.5} />
-          </span>
+          <img
+            src="/images/logo.png"
+            alt="Outdoor Vacationz"
+            className="navbar-logo-img"
+          />
           <span className="navbar-logo-text">
             Outdoor<span className="navbar-logo-accent">Vacationz</span>
           </span>

@@ -10,8 +10,8 @@ const contactDetails = [
   {
     icon: <MapPin size={20} />,
     label: 'Office Location',
-    value: 'Office -410 4th Floor, Cloud 9, near Mahagun mall, Sector 3F, Sector-1, Vaishali, Ghaziabad, Uttar Pradesh 201010',
-    href: 'https://share.google/tGPCpXw6TmYw4OV5K',
+    value: 'Office -349 3rd Floor, Cloud-9, near Mahagun Mall, Sector 3F, Sector-1, Vaishali, Ghaziabad, Uttar Pradesh 201010',
+    href: 'https://share.google/sjp5LTeJgfBvI0aiq',
   },
   { icon: <Clock size={20} />, label: 'Hours', value: 'Mon–Sat, 9am–7pm IST', href: undefined },
   { icon: <Instagram size={20} />, label: 'Instagram', value: '@outdoor_vacationz', href: 'https://www.instagram.com/outdoor_vacationz/' },
